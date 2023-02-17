@@ -1,3 +1,15 @@
+      <script>
+      import { ref } from 'vue'
+      
+      export default {
+        setup () {
+          return {
+            slide: ref('first'),
+            autoplay:ref(true)
+          }
+        }
+      }
+      </script>
 <template>
     <div class="q-pa-md carousel">
       <q-carousel
@@ -7,7 +19,7 @@
         v-model="slide"
         height="50vh"
         :autoplay="autoplay"
-        transition-next="slide-left"
+    
       >
     
         <q-carousel-slide name="first" img-src="../assets/images/AltJ.jpg">
@@ -24,8 +36,8 @@
         </q-carousel-slide>
         <q-carousel-slide name="third" img-src="../assets/images/TashSultana.jpeg">
           <div class="absolute-bottom custom-caption">
-            <div class="text-h2">TashSultana</div>
-            <div class="text-subtitle1">10/7/2023</div>
+            <div class="text-h2">Tash Sultana</div>
+            <div class="text-subtitle1">10/07/2023</div>
           </div>
         </q-carousel-slide> 
         <q-carousel-slide name="fourth" img-src="../assets/images/bonjovi.jpg">
@@ -50,18 +62,6 @@
     </div>
   </template>
   
-  <script>
-  import { ref } from 'vue'
-  
-  export default {
-    setup () {
-      return {
-        slide: ref('first'),
-        autoplay:ref(true)
-      }
-    }
-  }
-  </script>
   
   <style lang="scss" scoped>
   .custom-caption {
