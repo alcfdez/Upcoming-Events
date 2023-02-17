@@ -1,17 +1,15 @@
 <template>
-  <h1>Hello</h1>
+ 
   <div class="q-pa-md">
     <q-layout view="lHh lpr lFf" container style="height: 400px" class="shadow-2 rounded-borders">
       <q-header reveal elevated>
         <q-toolbar>
-          <q-btn flat round dense icon="menu" class="q-mr-sm" />
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
+          <q-btn flat round dense  class="q-mr-sm"><img class="iconHome" src="../assets/images/iconHome.png"></q-btn>
 
-          <q-toolbar-title>Quasar Framework</q-toolbar-title>
 
-          <q-btn flat round dense icon="whatshot" />
+          <q-toolbar-title class="title_header">MUSIC EVENTS</q-toolbar-title>
+
+          <q-btn flat round dense class="user"> <img class="iconUser" src="../assets/images/iconUser.png"></q-btn>
         </q-toolbar>
       </q-header>
 
@@ -31,3 +29,37 @@
     </q-layout>
   </div>
 </template>
+
+<style lang="scss" scoped>
+
+.q-pa-md{
+  background-color: $dark-blue;
+
+}
+q-toolbar{
+    background-color: $dark-page ;
+  }
+
+  .q-mr-sm{
+    .iconHome{
+      max-width: 2em;
+      max-height: 2em;
+    }
+  }
+  .title_header{
+    font-family: $font-title;
+    display: flex;
+    justify-content: center;
+  }
+
+
+
+.user{
+  .iconUser{
+  max-width: 2em;
+  max-height: 2em;
+  }
+
+}
+
+</style>
