@@ -1,17 +1,14 @@
-<template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
-  </q-page>
-</template>
-
-<script>
+<script setup>
+import ConcertList from 'src/components/ConcertList.vue';
 import { defineComponent } from 'vue'
 
-export default defineComponent({
-  name: 'IndexPage'
-})
 </script>
+
+<template>
+  <q-page class="flex flex-center">
+   <ConcertList/>
+  </q-page>
+  
+</template>
+
+
