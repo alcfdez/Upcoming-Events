@@ -40,13 +40,13 @@
             <div class="text-subtitle1">10/07/2023</div>
           </div>
         </q-carousel-slide> 
-        <q-carousel-slide name="fourth" img-src="../assets/images/bonjovi.jpg">
+        <q-carousel-slide name="fourth" img-src="../assets/images/bonjovi-2.jpeg">
           <div class="absolute-bottom custom-caption">
             <div class="text-h2">Bon Jovi</div>
             <div class="text-subtitle1">21/09/2023</div>
           </div>
         </q-carousel-slide>
-        <q-carousel-slide name="fifth" img-src="../assets/images/madonna1.jpeg">
+        <q-carousel-slide name="fifth" img-src="../assets/images/madonna-2.png">
           <div class="absolute-bottom custom-caption">
             <div class="text-h2">Madonna</div>
             <div class="text-subtitle1">11/08/2023</div>
