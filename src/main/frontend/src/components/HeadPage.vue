@@ -1,8 +1,8 @@
 <template>
  
   <div class="q-pa-md">
-    <q-layout view="lHh lpr lFf" container style="height: 400px" class="shadow-2 rounded-borders">
-      <q-header reveal elevated>
+    <q-layout view="lHh lpr lFf" container style="height: 600px" class="shadow-2 rounded-borders">
+      <q-header class="header" reveal elevated>
         <q-toolbar>
           <q-btn flat round dense  class="q-mr-sm"><img class="iconHome" src="../assets/images/iconHome.png"></q-btn>
 
@@ -13,9 +13,9 @@
         </q-toolbar>
       </q-header>
 
-      <q-footer reveal elevated>
+      <q-footer class="footer" reveal elevated>
         <q-toolbar>
-          <q-toolbar-title>Footer</q-toolbar-title>
+          <q-toolbar-title ><img class="logo" src="../assets/images/logo.png"></q-toolbar-title>
         </q-toolbar>
       </q-footer>
 
@@ -34,32 +34,47 @@
 
 .q-pa-md{
   background-color: $dark-blue;
-
+  margin: 0;
+  padding: 0;
 }
-q-toolbar{
-    background-color: $dark-page ;
-  }
 
+
+.header{
+  background-color: $primary ;
+  margin: 0;
+  padding: 0;
   .q-mr-sm{
+    height: 10em;
     .iconHome{
-      max-width: 2em;
-      max-height: 2em;
+      max-width: 4em;
+      max-height: 4em;
     }
   }
   .title_header{
     font-family: $font-title;
     display: flex;
     justify-content: center;
+    font-size: 5em;
   }
-
-
-
-.user{
-  .iconUser{
-  max-width: 2em;
-  max-height: 2em;
+  
+  .user{
+    .iconUser{
+      max-width: 4em;
+      max-height: 4em;
+    }
   }
-
+    
 }
+.footer{
+  background-color: $dark-blue;
+  
+
+  .logo{
+    display: flex;
+    justify-content: center;
+    margin-left: center;
+  }
+}
+
 
 </style>
