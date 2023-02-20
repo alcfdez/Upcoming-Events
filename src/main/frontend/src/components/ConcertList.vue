@@ -10,6 +10,7 @@ const columns = [
     field: row => row.Events,
     format: val => `${val}`,
     sortable: true
+    
   },
   { name: 'pic', align: 'center', label: 'pic', field: 'pic', sortable: true },
   { name: 'Description', label: 'Description', field: 'Description', sortable: true },
@@ -113,8 +114,9 @@ export default {
 </script>
 
 <template>
-  <div class="q-pa-md">
+  <div class="q-pa-md ">
     <q-table
+      class="bg-grey-4"
       :rows="rows"
       :columns="columns"
       row-key="name"
@@ -128,6 +130,18 @@ export default {
       <template v-slot:body-selection="scope">
         <q-toggle v-model="scope.selected" />
       </template>
+
     </q-table>
   </div>
 </template>
+<style lang="scss">
+  td:nth-child(2){
+    background-color: #e60000;
+  }
+  thead{
+    background-color: gray;
+  }
+  .q-table__bottom{
+    background-color: white;
+  }
+</style>
