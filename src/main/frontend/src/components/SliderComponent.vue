@@ -22,7 +22,7 @@
     
       >
     
-        <q-carousel-slide name="first" img-src="../assets/images/AltJ.jpg">
+        <q-carousel-slide name="first" img-src="../assets/images/ALT-J.jpg">
           <div class="absolute-bottom custom-caption">
             <div class="text-h2">Alt J</div>
             <div class="text-subtitle1">14/04/2023</div>
@@ -52,7 +52,7 @@
             <div class="text-subtitle1">11/08/2023</div>
           </div>
         </q-carousel-slide>
-        <q-carousel-slide name="sixth" img-src="../assets/images/losgatos.jpg">
+        <q-carousel-slide name="sixth" img-src="../assets/images/los-gatos-chernobyl.jpg">
           <div class="absolute-bottom custom-caption">
             <div class="text-h2">Los Gatos de Chernobyl</div>
             <div class="text-subtitle1">09/05/2023</div>
