@@ -1,17 +1,17 @@
+<script setup>
+import HeadPage from  '../components/HeadPage.vue'
+</script>
+
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
+  <q-page class="bg-blue">
+    <HeadPage/>
+
+    
+<q-footer class="footer bg-blue flex flex-center" reveal>
+    <img class="logo" src="../assets/images/logo.png" />
+</q-footer>
   </q-page>
+
 </template>
 
-<script>
-import { defineComponent } from 'vue'
 
-export default defineComponent({
-  name: 'IndexPage'
-})
-</script>
