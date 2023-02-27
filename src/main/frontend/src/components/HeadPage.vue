@@ -1,6 +1,4 @@
 <template>
-
- 
         <q-header class="header row justify-between items-center q-pa-lg  bg-primary"  reveal >
         <q-icon name="fa-solid fa-home" size="lg" color="white" />
 
@@ -12,7 +10,7 @@
 
 <style lang="scss" scoped>
 
- 
+
   .title_header {
     font-family: $font-title;
     }
