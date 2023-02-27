@@ -12,7 +12,8 @@ const columns = [
     sortable: true
     
   },
-  { name: 'pic', align: 'center', label: 'pic', field: 'pic', sortable: true },
+  // { name: 'pic', align: 'center', label: 'pic', field: 'pic', sortable: true },
+  { name: 'image', label: 'image', field: 'image', sortable: true },
   { name: 'Description', label: 'Description', field: 'Description', sortable: true },
   { name: 'Date', label: 'Date', field: 'Date' },
   { name: 'MaxCrowd', label: 'MaxCrowd', field: 'MaxCrowd'},
@@ -121,8 +122,10 @@ export default {
       :columns="columns"
       row-key="name"
       selection="multiple"
-      v-model:selected="selected"
-    >
+      v-model:selected="selected">
+      <q-td key="image" :props="props">
+        <q-img style="height: 80px; max-width:80px" src="../assets/images/conciertazo-azul.png"/>
+      </q-td>
       <template v-slot:header-selection="scope">
         <q-toggle v-model="scope.selected" />
       </template>
