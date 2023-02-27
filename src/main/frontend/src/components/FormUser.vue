@@ -25,7 +25,7 @@ const onReset = () => {
 <template>
   <q-page class="row justify-center text-center bg-blue-1">
     <q-img
-      src="../assets/images/concierto-form.jpg"
+      src="../../public/images/concierto-form.jpg"
       spinner-color="white"
       class="col-0 col-xl-7 col-lg-7 col-md-7 "
       height="100vh"
@@ -36,7 +36,7 @@ const onReset = () => {
 <div class="column container-icons space-between col-2 ">
     <q-icon name="fa-solid fa-house" class="q-mt-xl pointer gt-sm" size="lg" color="white"/>
       <q-img
-        src="../assets/images/logo.png"
+        src="../../public/images/logo.png"
         class="self-end q-mt-lg col-sm-12 logo"
 
       />
