@@ -1,4 +1,18 @@
 <script setup>
+
+import ConcertList from 'src/components/ConcertList.vue';
+import { defineComponent } from 'vue'
+
+</script>
+
+<template>
+  <q-page class="flex flex-center">
+   <ConcertList/>
+  </q-page>
+  
+</template>
+
+=======
 import SliderComponent from 'src/components/SliderComponent.vue';
 import HeadPage from  '../components/HeadPage.vue'
 </script>
@@ -15,4 +29,5 @@ import HeadPage from  '../components/HeadPage.vue'
   </q-page>
 
 </template>
+
 
