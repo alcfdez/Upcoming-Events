@@ -126,6 +126,7 @@ export default {
       <q-td key="image" :props="props">
         <q-img style="height: 80px; max-width:80px" src="../assets/images/conciertazo-azul.png"/>
       </q-td>
+      
       <template v-slot:header-selection="scope">
         <q-toggle v-model="scope.selected" />
       </template>
