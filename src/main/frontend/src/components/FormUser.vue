@@ -53,10 +53,10 @@ const onReset = () => {
           text-color="white"
           color="white"
           type="text"
-          lazy-rules="ondemand"
           :input-style="{ color: 'white', fontSize: '1.7em' }"
+          lazy-rules="ondemand"
           bg-color="red"
-          class="q-mt-xl input"
+          class="q-mt-xl"
           :rules="[
             (val) => (val && val.length > 3) || 'This field is required',
           ]"
@@ -74,7 +74,7 @@ const onReset = () => {
           lazy-rules="ondemand"
           :input-style="{ color: 'white', fontSize: '1.7em' }"
           bg-color="red"
-          class="q-mt-lg input"
+          class="q-mt-lg"
           :rules="[
             (val) => (val && val.length > 3) || 'This field is required',
           ]"
@@ -147,12 +147,5 @@ const onReset = () => {
   height: 6em;
 }
 
-:deep(.q-btn.button-new .q-focus.helper){
-  display: none;
-}
-
-// .button-new .q-focus-helper{
-//   display: none;
-// }
 
 </style>
