@@ -7,7 +7,6 @@ const columns = [
     required: true,
     label: 'Events',
     align: 'center',
-    // align: 'left',
     field: row => row.Events,
     format: val => `${val}`,
     sortable: true
@@ -111,7 +110,7 @@ export default {
 </script>
 
 <template>
-  <div class="q-pa-md ">
+  <div class="q-pa-md">
     <q-table class="bg-grey-4" :rows="rows" :columns="columns" row-key="name" selection="multiple"
       v-model:selected="selected">
 
@@ -120,9 +119,11 @@ export default {
       </template>
 
       <template #body-cell-Button>
-        <q-btn push color="white" text-color="primary" label="Add" />
-        <q-btn push color="white" text-color="primary" label="Edit" />
-        <q-btn push color="red" text-color="primary" label="delete" />
+        <q-td align="center" >
+          <q-btn push color="white" text-color="primary" label="Add" />
+          <q-btn push color="white" text-color="primary" label="Edit" />
+          <q-btn push color="red" text-color="primary" label="delete" />
+        </q-td>
       </template>
 
       <template v-slot:header-selection="scope">
@@ -131,19 +132,31 @@ export default {
 
       <template v-slot:body-selection="scope">
         <q-toggle v-model="scope.selected" />
-        
+
       </template>
 
     </q-table>
   </div>
 </template>
 <style lang="scss">
+// q-table{
+//   display: flex;
+
+// }
+.q-pa-md {
+  width: 80vw;
+}
+
 td:nth-child(2) {
-  background-color: #e60000;
+  background-color: #9E0404;
 }
 
 thead {
-  background-color: gray;
+  background-color: #D9D9D9;
+}
+
+tbody {
+  background-color: #B7B7B7;
 }
 
 .q-table__bottom {
