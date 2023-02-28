@@ -53,7 +53,7 @@ const onReset = () => {
           text-color="white"
           color="white"
           type="text"
-          :input-style="{ color: 'white', fontSize: '1.7em' }"
+          :input-style="{ color: 'white', fontSize: '1.7em'}"
           lazy-rules="ondemand"
           bg-color="red"
           class="q-mt-xl"
