@@ -28,8 +28,8 @@ public class Event {
     @Column (name = "description")
     private String description;
 
-    @Column (name = "id_image")
-    private String id_image;
+    // @Column (name = "id_image")
+    // private String id_image;
 
     @Column (name = "actual_participants")
     private int actual_participants;
@@ -37,13 +37,13 @@ public class Event {
     public Event() {
     }
 
-    public Event(String title, String date_hour, int max_participants, String description, String id_image,
+    public Event(String title, String date_hour, int max_participants, String description,
             int actual_participants) {
         this.title = title;
         this.date_hour = date_hour;
         this.max_participants = max_participants;
         this.description = description;
-        this.id_image = id_image;
+        // this.id_image = id_image;
         this.actual_participants = actual_participants;
     }
 
@@ -83,13 +83,13 @@ public class Event {
         this.description = description;
     }
 
-    public String getId_image() {
-        return id_image;
-    }
+    // public String getId_image() {
+    //     return id_image;
+    // }
 
-    public void setId_image(String id_image) {
-        this.id_image = id_image;
-    }
+    // public void setId_image(String id_image) {
+    //     this.id_image = id_image;
+    // }
 
     public int getActual_participants() {
         return actual_participants;
