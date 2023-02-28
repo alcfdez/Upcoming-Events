@@ -1,6 +1,8 @@
 <script setup>
 import SliderComponent from 'src/components/SliderComponent.vue';
 import HeadPage from  '../components/HeadPage.vue'
+
+
 </script>
 
 <template>

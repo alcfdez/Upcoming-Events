@@ -1,7 +1,13 @@
 <script>
-import EssentialLinkVue from 'src/components/EssentialLink.vue';
 
 const linksList= [
+
+  {
+    title:'Index',
+    caption:'index',
+    link:'index'
+  },
+
   {
     title:'Dashboard',
     caption:'dasboard',
