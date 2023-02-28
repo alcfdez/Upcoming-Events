@@ -5,7 +5,8 @@
         <q-icon name="fa-solid fa-home" size="lg" color="white" />
 
         <span class="title_header text-h2">MUSIC EVENTS</span>
-        <q-icon name="fa-solid fa-user" size="lg" color="white" />
+        <q-icon name="fa-solid fa-user" to= "/form" size="lg" color="white" />
+
       </q-header>
 
 </template>
