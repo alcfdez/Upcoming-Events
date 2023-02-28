@@ -14,7 +14,7 @@ import ConcertList from 'src/components/ConcertList.vue';
 
 
 <q-footer class="footer bg-blue flex flex-center" reveal>
-    <img class="logo" src="../../public/images/logo.png" />
+    <img class="logo" src="../assets/images/logo.png" />
 </q-footer>
   </q-page>
 

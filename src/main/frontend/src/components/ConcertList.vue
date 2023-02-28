@@ -40,7 +40,7 @@ const rows = [
     Button: 129
   },
   {
-    imagen: "../../public/images/ALTj.jpg",
+    imagen: "/src/assets/images/ALT-J.jpg",
     Events: 'Eclair',
     pic: 262,
     Description: 16.0,
