@@ -10,10 +10,9 @@ const columns = [
     field: row => row.Events,
     format: val => `${val}`,
     sortable: true
-    
   },
-  // { name: 'pic', align: 'center', label: 'pic', field: 'pic', sortable: true },
-  { name: 'image', label: 'image', field: 'image', sortable: true },
+
+  { name: 'imagen', align: 'center', label: 'Imagen', field: 'imagen', sortable: false, format: (val) => 'imagen' },
   { name: 'Description', label: 'Description', field: 'Description', sortable: true },
   { name: 'Date', label: 'Date', field: 'Date' },
   { name: 'MaxCrowd', label: 'MaxCrowd', field: 'MaxCrowd'},
@@ -22,14 +21,17 @@ const columns = [
 
 const rows = [
   {
+    imagen: "https://cdn.quasar.dev/img/avatar.png",
     Events: 'Frozen Yogurt',
     pic: 159,
     Description: 6.0,
     Date: 24,
     MaxCrowd: 4.0,
-    Button: 87
+    Button: 87,
+     imageIndex: 0
   },
   {
+    imagen: "https://i0.wp.com/losmejoresrock.com/wp-content/uploads/2022/12/bon-jovi-1992.jpg?fit=561%2C324&ssl=1",
     Events: 'Ice cream sandwich',
     pic: 237,
     Description: 9.0,
@@ -38,6 +40,7 @@ const rows = [
     Button: 129
   },
   {
+    imagen: "/src/assets/images/ALT-J.jpg",
     Events: 'Eclair',
     pic: 262,
     Description: 16.0,
@@ -48,12 +51,14 @@ const rows = [
   {
     Events: 'Cupcake',
     pic: 305,
+    imageIndex: 0,
     Description: 3.7,
     Date: 67,
     MaxCrowd: 4.3,
     Button: 413
   },
   {
+    imageIndex: 1,
     Events: 'Gingerbread',
     pic: 356,
     Description: 16.0,
@@ -123,10 +128,11 @@ export default {
       row-key="name"
       selection="multiple"
       v-model:selected="selected">
-      <q-td key="image" :props="props">
-        <q-img style="height: 80px; max-width:80px" src="../assets/images/conciertazo-azul.png"/>
-      </q-td>
-      
+
+    <template #body-cell-imagen="{ row }">
+      <q-img :src="row.imagen"  />
+    </template>
+
       <template v-slot:header-selection="scope">
         <q-toggle v-model="scope.selected" />
       </template>

@@ -1,26 +1,16 @@
 <script setup>
 
-import ConcertList from 'src/components/ConcertList.vue';
 import { defineComponent } from 'vue'
-
-</script>
-
-<template>
-  <q-page class="flex flex-center">
-   <ConcertList/>
-  </q-page>
-  
-</template>
-
-=======
 import SliderComponent from 'src/components/SliderComponent.vue';
-import HeadPage from  '../components/HeadPage.vue'
+import ConcertList from 'src/components/ConcertList.vue';
+
 </script>
+
 
 <template>
   <q-page class="bg-blue column items-center">
-    <HeadPage/>
-    <SliderComponent/>
+    <SliderComponent />
+    <ConcertList />
 
 
 <q-footer class="footer bg-blue flex flex-center" reveal>
