@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+// import { ref } from 'vue';
 import { Notify, useQuasar } from "quasar";
 import { useRouter } from 'vue-router';
 import SliderComponent from 'src/components/SliderComponent.vue';
