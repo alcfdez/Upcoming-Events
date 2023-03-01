@@ -1,6 +1,6 @@
       <script>
       import { ref } from 'vue'
-      
+
       export default {
         setup () {
           return {
@@ -19,10 +19,10 @@
         v-model="slide"
         height="30vh"
         :autoplay="autoplay"
-    
+
       >
-    
-        <q-carousel-slide name="first" img-src="../assets/images/ALT-J.jpg">
+
+        <q-carousel-slide name="first" img-src="../assets/images/AltJ.jpg">
           <div class="absolute-bottom custom-caption">
             <div class="text-h2">Alt J</div>
             <div class="text-subtitle1">14/04/2023</div>
@@ -34,12 +34,12 @@
             <div class="text-subtitle1">28/06/2023</div>
           </div>
         </q-carousel-slide>
-        <q-carousel-slide name="third" img-src="../assets/images/TashSultana.jpeg">
+        <q-carousel-slide name="third" img-src="../assets/images/tashSultana.jpeg">
           <div class="absolute-bottom custom-caption">
             <div class="text-h2">Tash Sultana</div>
             <div class="text-subtitle1">10/07/2023</div>
           </div>
-        </q-carousel-slide> 
+        </q-carousel-slide>
         <q-carousel-slide name="fourth" img-src="../assets/images/bonjovi-2.jpeg">
           <div class="absolute-bottom custom-caption">
             <div class="text-h2">Bon Jovi</div>
@@ -61,8 +61,8 @@
       </q-carousel>
     </div>
   </template>
-  
-  
+
+
   <style lang="scss" scoped>
   .custom-caption {
     text-align: center;
@@ -75,4 +75,3 @@
     width: 80%;
   }
   </style>
-  

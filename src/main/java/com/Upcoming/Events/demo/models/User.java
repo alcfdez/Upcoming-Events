@@ -1,41 +1,36 @@
 package com.Upcoming.Events.demo.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.List;
 
-@Entity
-@Table(name = "users")
+import javax.persistence.*;
 
+@Entity(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id_user")
-    private long id;
+    private Long id;
 
-    @Column (name = "username",nullable = false)
     private String username;
-
-    @Column (name = "password")
     private String password;
-
-    @Column (name = "role")
-    private String role;
-
-     public User () {
-     }
-
-    public User(String username, String password, String role) {
+    
+    public User(String username, String password, List<Authority> authorities) {
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.authorities = authorities;
     }
 
-    public long getId() {
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_authority",
+        joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn( name = "authority_id", referencedColumnName = "id"))
+    private List<Authority> authorities;
+
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -54,16 +49,12 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public List<Authority> getAuthorities() {
+        return authorities;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setAuthorities(List<Authority> authorities) {
+        this.authorities = authorities;
     }
-
     
-    
-
-     
 }
