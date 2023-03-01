@@ -23,7 +23,7 @@ const onReset = () => {
 </script>
 
 <template>
-  <q-page class="row justify-center text-center bg-blue-1">
+  <q-page class="row justify-center text-center bg-blue">
     <q-img
       src="../assets/images/concierto-form.jpg"
       spinner-color="white"
@@ -96,7 +96,7 @@ const onReset = () => {
             rounded
             label="Submit"
             type="submit"
-            color="blue"
+            color="blue-1"
             class="col-5 q-py-md"
           />
 
@@ -138,7 +138,7 @@ const onReset = () => {
 }
 
 .q-breadcrumbs__el {
-    color: whitegit;
+    color: white;
 }
 .pointer{
   cursor: pointer;
