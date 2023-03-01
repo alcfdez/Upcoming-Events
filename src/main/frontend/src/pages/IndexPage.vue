@@ -1,9 +1,7 @@
 <script setup>
-
-import { defineComponent } from 'vue'
 import SliderComponent from 'src/components/SliderComponent.vue';
-import ConcertList from 'src/components/ConcertList.vue';
-import HeadPage from 'src/components/HeadPage.vue';
+import HeadPage from  '../components/HeadPage.vue'
+import ConcertList  from  '../components/ConcertList.vue'
 </script>
 
 
@@ -12,8 +10,6 @@ import HeadPage from 'src/components/HeadPage.vue';
     <HeadPage />
     <SliderComponent />
     <ConcertList />
-
-
     <footer class="footer bg-blue flex flex-center" reveal>
       <img class="logo" src="../assets/images/logo.png" />
     </footer>
