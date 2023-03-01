@@ -15,7 +15,7 @@ const $q= useQuasar();
 <template>
 
  
-        <q-header class="header  row flex-center q-pa-lg  bg-primary"  reveal >
+        <q-header class="header  row flex-center q-pa-lg  bg-primary"   >
         <div class="container_head">
         <q-breadcrumbs-el icon="fa-solid fa-house" to="/form" style="font-size:2em;" />
 

@@ -34,7 +34,8 @@ const onReset = () => {
     <div class="container-form column col-5 justify-between">
 
 <div class="column container-icons space-between col-2 ">
-    <q-icon name="fa-solid fa-house" class="q-mt-xl pointer gt-sm" size="lg" color="white"/>
+  <q-breadcrumbs-el icon="fa-solid fa-house" class="q-mt-xl pointer gt-sm"  color="white" to="/" style="font-size:2em;" />
+    
       <q-img
         src="../assets/images/logo.png"
         class="self-end q-mt-lg col-sm-12 logo"
@@ -136,6 +137,9 @@ const onReset = () => {
   width: 84%;
 }
 
+.q-breadcrumbs__el {
+    color: whitegit;
+}
 .pointer{
   cursor: pointer;
   &:hover{
