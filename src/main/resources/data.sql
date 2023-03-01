@@ -1,1 +1,0 @@
-INSERT INTO eventos( id_event, title, date_hour, max_participants, description, actual_participants) VALUES (default,'Concert', '19/03/2023-15:00h',  200,  'Madonna Tour Nations',  100)
