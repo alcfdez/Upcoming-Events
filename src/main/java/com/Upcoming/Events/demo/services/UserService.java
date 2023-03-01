@@ -1,39 +1,22 @@
 package com.Upcoming.Events.demo.services;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
 import com.Upcoming.Events.demo.models.User;
-import com.Upcoming.Events.demo.repositories.UserRepository;
+import org.springframework.data.domain.Pageable;
 
-@Service
-public class UserService {
+
+public interface UserService {
     
-        private UserRepository repository;
     
-        public UserService(UserRepository repository){
-            this.repository = repository;
-        }
+        public List<User> findAll();
     
-        public List<User> getAll(){
-            return repository.findAll();
-        }
-    
-        public User getOne(Long id) {
-            User User = repository.findById(id).orElse(null);
-            return User;
-        }
-    
-        public User  save(User User) {
-            User UserSaved = repository.save(User);
-            return UserSaved;
-        }
-    
-        public static Optional <User> findById(Long id){
-            return null;
-        }
-    
-        public List<User> delete(Long id){
-            repository.deleteById(id);
-            return repository.findAll();
-        }
+        public Page<User> findAll(Pageable pageable);
+         
+        public User  save(User User); 
+          
+        public  Optional <User> findById(Long id);
+         
+        public void deleteById(Long id);
+         
     }
