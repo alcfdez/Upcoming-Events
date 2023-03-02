@@ -1,10 +1,7 @@
 <script setup>
-import FormUser from 'src/components/FormUser.vue';
-
+    import FormUser from 'src/components/FormUser.vue';  
 </script>
 
 <template>
-<FormUser />
-        
-    
+    <FormUser />
 </template>

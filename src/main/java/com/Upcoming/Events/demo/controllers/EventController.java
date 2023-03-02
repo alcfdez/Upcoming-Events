@@ -18,10 +18,10 @@ public class EventController {
     private EventService eventService;
     
 //Crear nuevo usuario
-    @PostMapping(value ="", consumes = "application/*") 
+@PostMapping(value ="", consumes = "application/*") 
     public ResponseEntity<?> create(@RequestBody Event event) {
         return ResponseEntity.status(HttpStatus.CREATED).body(eventService.save(event));
- }
+}
 //Leer un usuario
 @GetMapping
 public List<Event> getAll() {
