@@ -17,7 +17,7 @@ const $q= useQuasar();
  
         <q-header class="header  row flex-center q-pa-lg  bg-primary"  reveal >
         <div class="container_head">
-        <q-breadcrumbs-el icon="fa-solid fa-house" to="/form" style="font-size:2em;" />
+        <q-breadcrumbs-el icon="fa-solid fa-house" to="/" style="font-size:2em;" />
 
         <span class="title_header text-h2">MUSIC EVENTS</span>
         <q-breadcrumbs-el icon="fa-solid fa-user" to= "/form" style="font-size:2em;" color="white" />
