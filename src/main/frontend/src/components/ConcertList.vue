@@ -1,121 +1,47 @@
-<script>
-import { ref } from 'vue'
+<script setup>
+import { ref, defineProps } from 'vue';
+
+const props = defineProps({
+		event: {
+			type: Object,
+		}
+	});
+
+  console.log(props.event)
+  const rows = [
+   "https://cdn.quasar.dev/img/avatar.png"
+  ,
+    "https://i0.wp.com/losmejoresrock.com/wp-content/uploads/2022/12/bon-jovi-1992.jpg?fit=561%2C324&ssl=1"
+  ,
+    "/src/assets/images/ALT-J.jpg"
+  ]
 
 const columns = [
   {
-    name: 'Events',
+    name: 'title',
     required: true,
-    label: 'Events',
+    label: 'title',
+    field: "title",
     align: 'center',
-    field: row => row.Events,
     format: val => `${val}`,
     sortable: true
   },
 
-  { name: 'imagen', align: 'center', label: 'Imagen', field: 'imagen', sortable: false, format: (val) => 'imagen' },
-  { name: 'Description', align: 'center', label: 'Description', field: 'Description', sortable: true },
-  { name: 'Date', align: 'center', label: 'Date', field: 'Date' },
-  { name: 'MaxCrowd', align: 'center', label: 'MaxCrowd', field: 'MaxCrowd' },
+  { name: "rows" , align: 'center', label: 'Imagen', field:"rows"},
+  { name: 'Description', align: 'center', label: 'Description', field: 'description', sortable: true },
+  { name: 'date_hour', align: 'center', label: 'Date', field: 'date_hour', sortable: true  },
+  { name: 'max_participants', align: 'center', label: 'Capacity', field: 'max_participants' },
   { name: 'Button', align: 'center', label: 'Button', field: 'Button' }
 ]
-
-const rows = [
-  {
-    imagen: "https://cdn.quasar.dev/img/avatar.png",
-    Events: 'Frozen Yogurt',
-    pic: 159,
-    Description: 6.0,
-    Date: 24,
-    MaxCrowd: 4.0,
-    imageIndex: 0
-  },
-  {
-    imagen: "https://i0.wp.com/losmejoresrock.com/wp-content/uploads/2022/12/bon-jovi-1992.jpg?fit=561%2C324&ssl=1",
-    Events: 'Ice cream sandwich',
-    pic: 237,
-    Description: 9.0,
-    Date: 37,
-    MaxCrowd: 4.3
-  },
-  {
-    imagen: "/src/assets/images/ALT-J.jpg",
-    Events: 'Eclair',
-    pic: 262,
-    Description: 16.0,
-    Date: 23,
-    MaxCrowd: 6.0
-  },
-  {
-    Events: 'Cupcake',
-    pic: 305,
-    imageIndex: 0,
-    Description: 3.7,
-    Date: 67,
-    MaxCrowd: 4.3
-  },
-  {
-    imageIndex: 1,
-    Events: 'Gingerbread',
-    pic: 356,
-    Description: 16.0,
-    Date: 49,
-    MaxCrowd: 3.9
-  },
-  {
-    Events: 'Jelly bean',
-    pic: 375,
-    Description: 0.0,
-    Date: 94,
-    MaxCrowd: 0.0
-  },
-  {
-    Events: 'Lollipop',
-    pic: 392,
-    Description: 0.2,
-    Date: 98,
-    MaxCrowd: 0
-  },
-  {
-    Events: 'Honeycomb',
-    pic: 408,
-    Description: 3.2,
-    Date: 87,
-    MaxCrowd: 6.5
-  },
-  {
-    Events: 'Donut',
-    pic: 452,
-    Description: 25.0,
-    Date: 51,
-    MaxCrowd: 4.9
-  },
-  {
-    Events: 'KitKat',
-    pic: 518,
-    Description: 26.0,
-    Date: 65,
-    MaxCrowd: 7
-  }
-]
-
-export default {
-  setup() {
-    return {
-      selected: ref([]),
-      columns,
-      rows
-    }
-  }
-}
 </script>
 
 <template>
   <div class="q-pa-md">
-    <q-table class="bg-grey-4" :rows="rows" :columns="columns" row-key="name" selection="multiple"
+    <q-table class="bg-grey-4" :rows="props.event" :columns="columns" row-key="name" selection="multiple"
       v-model:selected="selected">
 
-      <template #body-cell-imagen="{ row }">
-        <q-img :src="row.imagen" />
+      <template #body-cell-imagen="{ rows }">
+        <q-img :src="rows" />
       </template>
 
       <template #body-cell-Button>
@@ -132,17 +58,12 @@ export default {
 
       <template v-slot:body-selection="scope">
         <q-toggle v-model="scope.selected" />
-
       </template>
 
     </q-table>
   </div>
 </template>
 <style lang="scss">
-// q-table{
-//   display: flex;
-
-// }
 .q-pa-md {
   width: 80vw;
 }
