@@ -21,7 +21,6 @@
         :autoplay="autoplay"
 
       >
-
         <q-carousel-slide name="first" img-src="../assets/images/AltJ.jpg">
           <div class="absolute-bottom custom-caption">
             <div class="text-h2">Alt J</div>
@@ -61,7 +60,6 @@
       </q-carousel>
     </div>
   </template>
-
 
   <style lang="scss" scoped>
   .custom-caption {
