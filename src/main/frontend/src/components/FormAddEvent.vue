@@ -78,8 +78,10 @@ const onReset = () => {
           bg-color="red"
           class="q-mt-lg"
           :rules="[
-            (val) => (val && val.length > 3) || 'This field is required',
+            (val) => (val && val.length > 3 ) || 'This field is required',
+             (val) => (val && val.length <= 40 ) || 'This field cannot have more than 40 characters'
           ]"
+
         />
         <q-input
           v-model="descriptionModel"
@@ -201,6 +203,4 @@ const onReset = () => {
   width: 16em;
   height: 6em;
 }
-
-
 </style>
