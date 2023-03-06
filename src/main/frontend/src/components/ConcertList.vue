@@ -1,48 +1,81 @@
 <script setup>
-import { ref, defineProps, reactive } from 'vue';
-import EventsService from "../services/EventsService.js"
-
-const service = new EventsService;
-const events = reactive(service.getEvents());
+import { ref, defineProps, reactive } from "vue";
+const selected = ref([]);
 
 const props = defineProps({
-		event: {
-			type: Object,
-		}
+  event: {
+    type: Object,
+  },
 });
-
-console.log(props.event)
 
 const columns = [
   {
-    name: 'title',
+    name: "title",
     required: true,
-    label: 'title',
+    label: "Title",
     field: "title",
-    align: 'center',
-    format: val => `${val}`,
-    sortable: true
+    align: "center",
+    sortable: true,
   },
-  { name: 'Description', align: 'center', label: 'Description', field: 'description', sortable: true },
-  { name: 'date_hour', align: 'center', label: 'Date', field: 'date_hour', sortable: true  },
-  { name: 'max_participants', align: 'center', label: 'Capacity', field: 'max_participants' },
-  { name: 'Button', align: 'center', label: 'Button', field: 'Button' }
-]
+  {
+    name: "Description",
+    align: "center",
+    label: "Description",
+    field: "description",
+    sortable: true,
+  },
+  {
+    name: "date_hour",
+    align: "center",
+    label: "Date",
+    field: "date_hour",
+    sortable: true,
+  },
+  {
+    name: "max_participants",
+    align: "center",
+    label: "Capacity",
+    field: "max_participants",
+    sortable: true,
+  },
+  { name: "Actions", align: "left", label: "Actions", field: "Actions" },
+];
+
+function getSelectedString(rows) {
+  return selected.value.length === 0
+    ? ""
+    : `${selected.value.length} record${
+        selected.value.length > 1 ? "s" : ""
+      } selected of ${rows}`;
+}
 </script>
 
 <template>
-  <div class="q-pa-md">
-    <q-table class="bg-grey-4" :rows="props.event" :columns="columns" row-key="name" selection="multiple"
-      v-model:selected="selected">
-
-      <template #body-cell-imagen="{ rows }">
+  <div class="list q-pa-md">
+    <q-table
+      class="bg-grey-4"
+      :rows="props.event"
+      :columns="columns"
+      row-key="name"
+      :selected-rows-label="getSelectedString"
+      selection="multiple"
+      v-model:selected="selected"
+    >
+      <!-- <template #body-cell-imagen="{ rows }">
         <q-img :src="rows" />
-      </template>
+      </template> -->
 
-      <template #body-cell-Button>
-        <q-td align="center" >
-          <q-btn push color="white" text-color="primary" label="Edit" class="q-mr-sm" />
-          <q-btn push color="red" text-color="primary" label="delete" />
+      <template #body-cell-Actions>
+        <q-td align="center">
+          <q-btn
+            push
+            color="white"
+            text-color="primary"
+            label="Edit"
+            class="q-mr-md"
+          />
+          <q-btn push color="red" label="delete" />
+          <!-- <q-btn push color="red" text-color="primary" label="add" /> -->
         </q-td>
       </template>
 
@@ -53,28 +86,58 @@ const columns = [
       <template v-slot:body-selection="scope">
         <q-toggle v-model="scope.selected" />
       </template>
-
     </q-table>
   </div>
 </template>
 <style lang="scss">
 .q-pa-md {
   width: 80vw;
-}
+  .q-table {
+    thead {
+      background-color: #d9d9d9;
+    }
+    th {
+      text-align: center;
+      font-size: 1.5em;
+    }
+    tbody {
+      background-color: #b7b7b7;
 
-td:nth-child(2) {
-  background-color: #9E0404;
-}
+      td {
+        overflow-x: auto;
+        font-size: 1.2em;
+        font-weight: 500;
+        &:nth-child(2) {
+          background-color: #9e0404;
+          color: white;
+          max-width: 10em;
+          white-space: pre-wrap;
+        }
+        &:nth-child(3) {
+          white-space: pre-wrap;
+          max-width: 20em;
+        }
+        & {
+          overflow-x: auto;
+        }
 
-thead {
-  background-color: #D9D9D9;
-}
+        &::-webkit-scrollbar {
+          height: 6px; /* Altura de la barra */
+        }
 
-tbody {
-  background-color: #B7B7B7;
-}
+        &::-webkit-scrollbar-thumb {
+          background-color: #999; /* Color de la barra */
+        }
 
-.q-table__bottom {
-  background-color: white;
+        &::-webkit-scrollbar-track {
+          background-color: #ddd; /* Color del fondo de la barra */
+        }
+      }
+    }
+  }
+}
+.q-img {
+  height: 15vh;
+  width: 15vw;
 }
 </style>
