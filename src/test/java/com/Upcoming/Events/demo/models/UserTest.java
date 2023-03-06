@@ -25,9 +25,9 @@ public class UserTest {
         entityManager.persist(paco);
         entityManager.flush();
 
-        User retrievedCountry = entityManager.find(User.class, paco.getId());
+        User retrievedUser = entityManager.find(User.class, paco.getId());
 
-        assertThat(retrievedCountry).isNotNull();
-        assertThat(retrievedCountry.getUsername()).isEqualTo("Paco");
+        assertThat(retrievedUser).isNotNull();
+        assertThat(retrievedUser.getUsername()).isEqualTo("Paco");
     }
 }
