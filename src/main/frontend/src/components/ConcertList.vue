@@ -1,20 +1,17 @@
 <script setup>
-import { ref, defineProps } from 'vue';
+import { ref, defineProps, reactive } from 'vue';
+import EventsService from "../services/EventsService.js"
+
+const service = new EventsService;
+const events = reactive(service.getEvents());
 
 const props = defineProps({
 		event: {
 			type: Object,
 		}
-	});
+});
 
-  console.log(props.event)
-  const rows = [
-   "https://cdn.quasar.dev/img/avatar.png"
-  ,
-    "https://i0.wp.com/losmejoresrock.com/wp-content/uploads/2022/12/bon-jovi-1992.jpg?fit=561%2C324&ssl=1"
-  ,
-    "/src/assets/images/ALT-J.jpg"
-  ]
+console.log(props.event)
 
 const columns = [
   {
@@ -26,8 +23,6 @@ const columns = [
     format: val => `${val}`,
     sortable: true
   },
-
-  { name: "rows" , align: 'center', label: 'Imagen', field:"rows"},
   { name: 'Description', align: 'center', label: 'Description', field: 'description', sortable: true },
   { name: 'date_hour', align: 'center', label: 'Date', field: 'date_hour', sortable: true  },
   { name: 'max_participants', align: 'center', label: 'Capacity', field: 'max_participants' },
@@ -46,8 +41,7 @@ const columns = [
 
       <template #body-cell-Button>
         <q-td align="center" >
-          <q-btn push color="white" text-color="primary" label="Add" />
-          <q-btn push color="white" text-color="primary" label="Edit" />
+          <q-btn push color="white" text-color="primary" label="Edit" class="q-mr-sm" />
           <q-btn push color="red" text-color="primary" label="delete" />
         </q-td>
       </template>

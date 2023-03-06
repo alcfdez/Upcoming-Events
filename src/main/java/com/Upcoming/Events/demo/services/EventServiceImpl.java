@@ -11,10 +11,14 @@ import com.Upcoming.Events.demo.models.Event;
 import com.Upcoming.Events.demo.repositories.EventRepository;
 
 @Service
-public class EventServiceImpl implements EventService{
+public class EventServiceImpl implements BaseService<Event>{
 
     @Autowired
     private EventRepository eventRepository;
+    
+    public EventServiceImpl(EventRepository eventRepository) {
+        this.eventRepository = eventRepository;
+    }
 
     @Override
     @Transactional 

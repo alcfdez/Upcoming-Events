@@ -7,15 +7,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.Upcoming.Events.demo.models.Event;
-import com.Upcoming.Events.demo.services.EventService;
+import com.Upcoming.Events.demo.services.EventServiceImpl;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/events")
 public class EventController {
+
+
+    public EventController(EventServiceImpl eventService) {
+        this.eventService = eventService;
+    }
     
     @Autowired
-    private EventService eventService;
+    private EventServiceImpl eventService;
     
 //Crear nuevo usuario
 @PostMapping(value ="", consumes = "application/*") 
@@ -26,6 +31,17 @@ public class EventController {
 @GetMapping
 public List<Event> getAll() {
     return eventService.findAll();
+}
+
+
+@GetMapping("/{id}") 
+public ResponseEntity<?> read(@PathVariable Long id){
+    Optional<Event> oEvent = eventService.findById(id);
+    if(!oEvent.isPresent()){
+        return ResponseEntity.notFound().build(); 
+    }
+    return ResponseEntity.ok(oEvent);  
+
 }
 
 //Actualizar usuario
