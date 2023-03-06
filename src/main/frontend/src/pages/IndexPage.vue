@@ -31,8 +31,12 @@ onBeforeMount(async () => {
 <style lang="scss" scoped>
 
 footer{
-  position:absolute;
+  position: absolute;
   bottom: 0;
+
+  img{
+    width: 80%;
+  }
 }
 </style>
 
