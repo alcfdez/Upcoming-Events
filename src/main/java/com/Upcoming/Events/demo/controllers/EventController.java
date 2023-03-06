@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.Upcoming.Events.demo.models.Event;
-import com.Upcoming.Events.demo.services.EventService;
 import com.Upcoming.Events.demo.services.EventServiceImpl;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -21,7 +20,7 @@ public class EventController {
     }
     
     @Autowired
-    private EventService eventService;
+    private EventServiceImpl eventService;
     
 //Crear nuevo usuario
 @PostMapping(value ="", consumes = "application/*") 

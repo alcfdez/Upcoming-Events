@@ -10,7 +10,7 @@ import com.Upcoming.Events.demo.models.User;
 import com.Upcoming.Events.demo.repositories.UserRepository;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements BaseService<User>{
     
     @Autowired
     private UserRepository userRepository;
