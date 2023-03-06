@@ -25,7 +25,7 @@ const onSubmit = async () => {
     .then((res) =>
       $q.notify({
         type: "positive",
-        message: "Animal added successfully!",
+        message: "Event added successfully!",
         icon: "fa-solid fa-circle-check",
       })
     )
@@ -54,7 +54,7 @@ const onReset = () => {
 
 <div class="column container-icons space-between col-1 ">
   <q-breadcrumbs-el icon="fa-solid fa-house" class="q-mt-xl pointer gt-sm"  color="white" to="/" style="font-size:2em;" />
-    
+
       <q-img
         src="../assets/images/logo.png"
         class="self-end q-mt-lg col-sm-12 logo"

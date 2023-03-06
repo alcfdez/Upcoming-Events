@@ -11,8 +11,9 @@ const events = reactive(service.getEvents());
 onBeforeMount(async () => {
   await service.fetchAll();
   console.log(events.value)
-
 })
+
+
 </script>
 
 
@@ -27,4 +28,11 @@ onBeforeMount(async () => {
   </q-page>
 </template>
 
+<style lang="scss" scoped>
+
+footer{
+  position:absolute;
+  bottom: 0;
+}
+</style>
 
