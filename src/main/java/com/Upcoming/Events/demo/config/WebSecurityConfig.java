@@ -32,7 +32,7 @@ public class WebSecurityConfig {
                     .logoutUrl ("api/logout")
                     .deleteCookies ("JSESIONID"))
                 .headers ( header -> header.frameOptions().disable())
-                .httpBasic (Customizer.withDefaults())
+                // .httpBasic (Customizer.withDefaults())
                 .authorizeHttpRequests()
                 .antMatchers(HttpMethod.POST, "/api/events").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/events").permitAll()

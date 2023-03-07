@@ -2,12 +2,17 @@ package com.upcoming.events.demo.services;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import com.upcoming.events.demo.exception.UserAlreadyExistsException;
+import com.upcoming.events.demo.exception.UserServiceException;
 import com.upcoming.events.demo.models.User;
 import com.upcoming.events.demo.repositories.UserRepository;
 
@@ -17,10 +22,28 @@ public class UserServiceImpl implements BaseService<User>{
     @Autowired
     private UserRepository userRepository;
 
-    public User store (User user){
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
-            String result = encoder.encode("myPassword");
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
+
+
+    public User store(User user){
+
+            Optional<User> userOptional = userRepository.findByUsername(user.getUsername()); 
+            
+            if (userOptional.isPresent()){
+                throw new UserAlreadyExistsException("El usuario ya existe.");
+            }
+            try{
+                BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+                String enocdedPassword = passwordEncoder.encode(user.getPassword());
+                user.setPassword(enocdedPassword);
+                return userRepository.save(user);
+            }catch (DataAccessException e){
+                throw new UserServiceException("Usuario no guardado",e);
+            }
+
+        }        
 
     @Override
     public List<User> 

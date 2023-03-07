@@ -18,7 +18,7 @@ import com.upcoming.events.demo.models.User;
 import com.upcoming.events.demo.services.UserServiceImpl;
 
 @RestController
-@RequestMapping("/api/v1/events")
+@RequestMapping("/api/events/eventos")
 public class RegisterController {
 
  @Autowired
@@ -28,7 +28,7 @@ public class RegisterController {
   this.userService = userService;
 }
 
-@PostMapping(value ="", consumes = "application/*")
+@PostMapping(value ="/api/events/eventos", consumes = "application/*")
    public ResponseEntity<?> create(@RequestBody User user) {
     // return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
         try {
