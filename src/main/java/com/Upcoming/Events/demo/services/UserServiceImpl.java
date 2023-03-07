@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import com.Upcoming.Events.demo.models.User;
@@ -15,8 +16,14 @@ public class UserServiceImpl implements BaseService<User>{
     @Autowired
     private UserRepository userRepository;
 
+    public User store (User user){
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
+            String result = encoder.encode("myPassword");
+    }
+
     @Override
-    public List<User> findAll() {
+    public List<User> 
+    findAll() {
         return userRepository.findAll();
     }
 

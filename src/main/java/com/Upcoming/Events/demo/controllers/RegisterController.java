@@ -18,14 +18,25 @@ import com.Upcoming.Events.demo.services.UserServiceImpl;
 
 @RestController
 @RequestMapping("/api/v1/events")
-public class UserController {
+public class RegisterController {
 
  @Autowired
  private UserServiceImpl userService;
 
- @PostMapping(value ="", consumes = "application/*")
+ public RegisterController(UserServiceImpl userService) {
+  this.userService = userService;
+}
+
+@PostMapping(value ="", consumes = "application/*")
    public ResponseEntity<?> create(@RequestBody User user) {
-    return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
+    // return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
+        try {
+          userService.store(user);
+          return ResponseEntity.status(201).body(null);          
+        } 
+        catch (Exception e) {
+          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
    }
 
    @GetMapping

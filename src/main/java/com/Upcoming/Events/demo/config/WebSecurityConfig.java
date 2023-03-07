@@ -1,9 +1,11 @@
 package com.Upcoming.Events.demo.config;
 
+import org.springframework.cglib.core.Customizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -11,18 +13,32 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 // import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.header.Header;
 
 @Configuration
+@EnableWebSecurity
 public class WebSecurityConfig {
 
+    
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-       return http
-       .httpBasic()
-                .and().authorizeHttpRequests()
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http 
+    
+                .cors()
+                .and()
+                .csrf(csrf -> csrf.disable())
+                .formLogin (form -> form.disable())
+                .logout (out -> out
+                    .logoutUrl ("api/logout")
+                    .deleteCookies ("JSESIONID"))
+                .headers ( header -> header.frameOptions().disable())
+                .httpBasic (Customizer.withDefaults())
+                .authorizeHttpRequests()
                 .antMatchers(HttpMethod.POST, "/api/events").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/events").permitAll()
                 .and().csrf().disable().build();
+                
+                return http.build();
     }
 
     @Bean 
