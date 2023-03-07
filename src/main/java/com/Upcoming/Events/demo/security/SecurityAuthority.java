@@ -1,7 +1,8 @@
-package com.Upcoming.Events.demo.security;
+package com.upcoming.events.demo.security;
 
 import org.springframework.security.core.GrantedAuthority;
-import com.Upcoming.Events.demo.models.Authority;
+
+import com.upcoming.events.demo.models.Authority;
 
 
 public class SecurityAuthority implements GrantedAuthority{
