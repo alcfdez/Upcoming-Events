@@ -19,6 +19,10 @@ public class User {
         this.authorities = authorities;
     }
 
+    public User() {
+        
+    }
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_authority",
         joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"),

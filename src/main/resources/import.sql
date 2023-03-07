@@ -3,4 +3,4 @@ INSERT INTO eventos( id, title, date_hour, max_participants, description, actual
 INSERT INTO eventos( id, title, date_hour, max_participants, description, actual_participants) VALUES (default,'Las Ketchup', '09/12/2023-15:00h',  100,  'Asere Jeee',  100)
 INSERT INTO eventos( id, title, date_hour, max_participants, description, actual_participants) VALUES (default,'Las Ketchup', '09/12/2023-15:00h',  100,  'Asere Jeee',  100)
 INSERT INTO eventos( id, title, date_hour, max_participants, description, actual_participants) VALUES (default,'Las Ketchup', '09/12/2023-15:00h',  100,  'Asere Jeee',  100)
--- INSERT INTO users( id, username, password, authorities) VALUES (default,'Raul', 'qwerty12345' )
+INSERT INTO users( id, username, password) VALUES (default,'Raul', 'qwerty12345' )

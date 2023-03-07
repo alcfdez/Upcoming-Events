@@ -17,7 +17,7 @@ import com.Upcoming.Events.demo.models.User;
 import com.Upcoming.Events.demo.services.UserServiceImpl;
 
 @RestController
-@RequestMapping("/api/v1/events")
+@RequestMapping("/api/users")
 public class UserController {
 
  @Autowired
