@@ -29,14 +29,7 @@ onBeforeMount(async () => {
 </template>
 
 <style lang="scss" scoped>
+@use "../css/mixins.scss" as m;
 
-footer{
-  position: absolute;
-  bottom: 0;
-
-  img{
-    width: 80%;
-  }
-}
 </style>
 
