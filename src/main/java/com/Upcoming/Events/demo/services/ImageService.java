@@ -1,9 +1,10 @@
-package com.Upcoming.Events.demo.services;
+package com.Upcoming.events.demo.services;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
-import com.Upcoming.Events.demo.models.Image;
-import com.Upcoming.Events.demo.repositories.ImageRepository;
+
+import com.Upcoming.events.demo.models.Image;
+import com.Upcoming.events.demo.repositories.ImageRepository;
 
 @Service
 public class ImageService {

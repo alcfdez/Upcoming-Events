@@ -1,4 +1,4 @@
-package com.Upcoming.Events.demo.security;
+package com.Upcoming.events.demo.security;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.Upcoming.Events.demo.models.User;
+import com.Upcoming.events.demo.models.User;
 
 
 public class SecurityUser implements UserDetails {

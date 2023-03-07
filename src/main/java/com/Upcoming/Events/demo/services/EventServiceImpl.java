@@ -1,4 +1,4 @@
-package com.Upcoming.Events.demo.services;
+package com.Upcoming.events.demo.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import com.Upcoming.Events.demo.models.Event;
-import com.Upcoming.Events.demo.repositories.EventRepository;
+
+import com.Upcoming.events.demo.models.Event;
+import com.Upcoming.events.demo.repositories.EventRepository;
 
 @Service
 public class EventServiceImpl implements BaseService<Event>{

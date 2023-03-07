@@ -15,8 +15,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import com.Upcoming.Events.demo.models.Event;
-import com.Upcoming.Events.demo.repositories.EventRepository;
+
+import com.Upcoming.events.demo.models.Event;
+import com.Upcoming.events.demo.repositories.EventRepository;
+import com.Upcoming.events.demo.services.EventServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 public class EventServiceImplTest {
