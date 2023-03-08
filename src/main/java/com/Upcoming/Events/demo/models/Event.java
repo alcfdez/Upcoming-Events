@@ -1,11 +1,11 @@
 package com.Upcoming.Events.demo.models;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "eventos")
+@Table(name = "events")
 
 public class Event {
     @Id
@@ -35,7 +35,7 @@ public class Event {
     }
 
     public Event(String title, String date_hour, int max_participants, String description,
-            int actual_participants, List<User> users) {
+            int actual_participants, Set<User> users) {
         this.title = title;
         this.date_hour = date_hour;
         this.max_participants = max_participants;
@@ -46,7 +46,7 @@ public class Event {
     }
 
     @ManyToMany(mappedBy = "events", fetch = FetchType.EAGER)
-    List<User> users;
+    Set<User> users;
 
     public long getId() {
         return id;
@@ -56,11 +56,11 @@ public class Event {
         this.id = id;
     }
 
-    public List<User> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 

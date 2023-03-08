@@ -25,8 +25,8 @@ public class User {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_event",
-        joinColumns = @JoinColumn(name="events_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn( name = "users_id", referencedColumnName = "id"))
+        joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn( name = "event_id", referencedColumnName = "id"))
     private List<Event> events;
 
     @ManyToMany(fetch = FetchType.EAGER)
