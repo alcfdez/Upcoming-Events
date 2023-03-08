@@ -18,7 +18,7 @@ public class RegisterControllerTest {
     private RegisterController registerController;
 
     @InjectMocks
-    private UserServiceImpl uServiceImpl;
+    private UserServiceImpl userServiceImpl;
 
     private List<Authority> user;
 

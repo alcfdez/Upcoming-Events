@@ -18,7 +18,7 @@ import com.upcoming.events.demo.models.User;
 import com.upcoming.events.demo.services.UserServiceImpl;
 
 @RestController
-@RequestMapping("/api/events/eventos")
+@RequestMapping("/api")
 public class RegisterController {
 
  @Autowired
@@ -28,9 +28,9 @@ public class RegisterController {
   this.userService = userService;
 }
 
-@PostMapping(value ="/api/events/eventos", consumes = "application/*")
+@PostMapping(value ="/register")
    public ResponseEntity<?> create(@RequestBody User user) {
-    // return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
+    
         try {
           userService.store(user);
           return ResponseEntity.status(201).body(null);          
@@ -40,30 +40,6 @@ public class RegisterController {
         }
    }
 
-   @GetMapping
-   public List<User> getAll() {
-    return userService.findAll();
-   }
-
-   @PutMapping("/{id}")
-   public ResponseEntity<?> update(@RequestBody User userDetails, @PathVariable Long id) {
-    Optional<User> user = userService.findById(id);
-    if (!user.isPresent()) {
-      return ResponseEntity.notFound().build();
-    }
-
-    user.get().setUsername(userDetails.getUsername());
-    user.get().setPassword(userDetails.getPassword());
-    return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user.get()));
-   }
-
-   @DeleteMapping("/{id}")
-   public ResponseEntity<?> delete(@PathVariable Long id) {
-    if (!userService.findById(id).isPresent()) {
-        return ResponseEntity.notFound().build();
-   }
-   userService.deleteById(id);
-   return ResponseEntity.ok().build();
-}
+   
 }
 

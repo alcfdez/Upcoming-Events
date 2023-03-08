@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -26,38 +27,37 @@ public class WebSecurityConfig {
     
                 .cors()
                 .and()
+                .headers ( header -> header.frameOptions().disable())
                 .csrf(csrf -> csrf.disable())
                 .formLogin (form -> form.disable())
                 .logout (out -> out
                     .logoutUrl ("api/logout")
                     .deleteCookies ("JSESIONID"))
-                .headers ( header -> header.frameOptions().disable())
-                // .httpBasic (Customizer.withDefaults())
-                .authorizeHttpRequests()
-                .antMatchers(HttpMethod.POST, "/api/events").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/events").permitAll()
-                .and().csrf().disable().build();
+                .authorizeHttpRequests((auth) -> auth
+                    .antMatchers(HttpMethod.POST, "/api/register").permitAll()
+                    .antMatchers(HttpMethod.GET, "/api/register").permitAll());
+                // .httpBasic(Customizer.withDefaults());
                 
                 return http.build();
     }
 
-    @Bean 
-    UserDetailsService userDetailsService(){
-        return new InMemoryUserDetailsManager(
-            User.withUsername("user")
-                .password(passwordEncoder().encode("123"))
-                .authorities("read", "write","ROLE_USER")
-                .build(), 
-                User.withUsername("admin")
-                .password(passwordEncoder().encode("123"))
-                .authorities("read", "write", "ROLE_ADMIN")
-                .build()
-        );
-    }
+    // @Bean 
+    // UserDetailsService userDetailsService(){
+    //     return new InMemoryUserDetailsManager(
+    //         User.withUsername("user")
+    //             .password(passwordEncoder().encode("123"))
+    //             .authorities("read", "write","ROLE_USER")
+    //             .build(), 
+    //             User.withUsername("admin")
+    //             .password(passwordEncoder().encode("123"))
+    //             .authorities("read", "write", "ROLE_ADMIN")
+    //             .build()
+    //     );
+    // }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }
 

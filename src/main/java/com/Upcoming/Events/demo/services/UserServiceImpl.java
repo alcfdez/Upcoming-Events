@@ -32,15 +32,15 @@ public class UserServiceImpl implements BaseService<User>{
             Optional<User> userOptional = userRepository.findByUsername(user.getUsername()); 
             
             if (userOptional.isPresent()){
-                throw new UserAlreadyExistsException("El usuario ya existe.");
+                throw new UserAlreadyExistsException("User already exist.");
             }
             try{
                 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-                String enocdedPassword = passwordEncoder.encode(user.getPassword());
-                user.setPassword(enocdedPassword);
+                String encodedPassword = passwordEncoder.encode(user.getPassword());
+                user.setPassword(encodedPassword);
                 return userRepository.save(user);
             }catch (DataAccessException e){
-                throw new UserServiceException("Usuario no guardado",e);
+                throw new UserServiceException("User isn't save.",e);
             }
 
         }        
