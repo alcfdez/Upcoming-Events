@@ -16,9 +16,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
-import com.Upcoming.events.demo.models.Event;
-import com.Upcoming.events.demo.repositories.EventRepository;
-import com.Upcoming.events.demo.services.EventServiceImpl;
+import com.upcoming.events.demo.models.Event;
+import com.upcoming.events.demo.repositories.EventRepository;
+import com.upcoming.events.demo.services.EventServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 public class EventServiceImplTest {

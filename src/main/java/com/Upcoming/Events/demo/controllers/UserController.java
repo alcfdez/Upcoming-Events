@@ -1,4 +1,4 @@
-package com.Upcoming.events.demo.controllers;
+package com.upcoming.events.demo.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Upcoming.events.demo.models.User;
-import com.Upcoming.events.demo.services.UserServiceImpl;
+import com.upcoming.events.demo.models.User;
+import com.upcoming.events.demo.services.UserServiceImpl;
 
 @RestController
 @RequestMapping("/api/users")

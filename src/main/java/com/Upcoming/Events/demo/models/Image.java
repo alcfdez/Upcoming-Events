@@ -1,4 +1,4 @@
-package com.Upcoming.events.demo.models;
+package com.upcoming.events.demo.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

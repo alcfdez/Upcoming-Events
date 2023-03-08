@@ -1,4 +1,4 @@
-package com.Upcoming.events.demo.controllers;
+package com.upcoming.events.demo.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.Upcoming.events.demo.models.Event;
-import com.Upcoming.events.demo.services.EventServiceImpl;
+import com.upcoming.events.demo.models.Event;
+import com.upcoming.events.demo.services.EventServiceImpl;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController

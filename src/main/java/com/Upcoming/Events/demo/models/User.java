@@ -1,4 +1,4 @@
-package com.Upcoming.events.demo.models;
+package com.upcoming.events.demo.models;
 
 import java.util.List;
 
