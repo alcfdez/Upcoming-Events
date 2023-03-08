@@ -17,7 +17,7 @@ import com.Upcoming.Events.demo.models.User;
 import com.Upcoming.Events.demo.services.UserServiceImpl;
 
 @RestController
-@RequestMapping("/api/v1/events")
+@RequestMapping("/api/users")
 public class UserController {
 
  @Autowired
@@ -27,6 +27,16 @@ public class UserController {
    public ResponseEntity<?> create(@RequestBody User user) {
     return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
    }
+
+   @GetMapping("/{id}") 
+    public ResponseEntity<?> read(@PathVariable Long id){
+    Optional<User> oUser = userService.findById(id);
+    if(!oUser.isPresent()){
+        return ResponseEntity.notFound().build(); 
+    }
+    return ResponseEntity.ok(oUser);  
+
+}
 
    @GetMapping
    public List<User> getAll() {

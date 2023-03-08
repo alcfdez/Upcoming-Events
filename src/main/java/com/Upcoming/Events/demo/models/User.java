@@ -13,17 +13,35 @@ public class User {
     private String username;
     private String password;
     
-    public User(String username, String password, List<Authority> authorities) {
+    public User(String username, String password, List<Authority> authorities, List<Event> events) {
         this.username = username;
         this.password = password;
         this.authorities = authorities;
+        this.events = events;
     }
+
+    public User() {
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_event",
+        joinColumns = @JoinColumn(name="events_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn( name = "users_id", referencedColumnName = "id"))
+    private List<Event> events;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_authority",
         joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"),
         inverseJoinColumns = @JoinColumn( name = "authority_id", referencedColumnName = "id"))
     private List<Authority> authorities;
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
 
     public Long getId() {
         return id;

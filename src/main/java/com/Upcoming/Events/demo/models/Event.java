@@ -1,11 +1,8 @@
 package com.Upcoming.Events.demo.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.List;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "eventos")
@@ -38,17 +35,33 @@ public class Event {
     }
 
     public Event(String title, String date_hour, int max_participants, String description,
-            int actual_participants) {
+            int actual_participants, List<User> users) {
         this.title = title;
         this.date_hour = date_hour;
         this.max_participants = max_participants;
         this.description = description;
         // this.id_image = id_image;
         this.actual_participants = actual_participants;
+        this.users = users;
     }
+
+    @ManyToMany(mappedBy = "events", fetch = FetchType.EAGER)
+    List<User> users;
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     public String getTitle() {

@@ -33,9 +33,9 @@ public class EventServiceImplTest {
     @BeforeEach
     public void setUp() {
         eventList = new ArrayList<>();
-        eventList.add(new Event("Evento 1", "2023-03-15", 10, "Evento de prueba 1", 1));
-        eventList.add(new Event("Evento 2", "2023-03-20", 20, "Evento de prueba 2", 2));
-        eventList.add(new Event("Evento 3", "2023-03-25", 30, "Evento de prueba 3", 3));
+        eventList.add(new Event("Evento 1", "2023-03-15", 10, "Evento de prueba 1", 1,null));
+        eventList.add(new Event("Evento 2", "2023-03-20", 20, "Evento de prueba 2", 2,null));
+        eventList.add(new Event("Evento 3", "2023-03-25", 30, "Evento de prueba 3", 3, null));
     }
 
     @Test
@@ -67,7 +67,7 @@ public class EventServiceImplTest {
 
     @Test
     public void testSave() {
-        Event event = new Event("Evento 4", "2023-04-01", 40, "Evento de prueba 4", 4);
+        Event event = new Event("Evento 4", "2023-04-01", 40, "Evento de prueba 4", 4,null);
 
         when(eventRepository.save(any(Event.class))).thenReturn(event);
 

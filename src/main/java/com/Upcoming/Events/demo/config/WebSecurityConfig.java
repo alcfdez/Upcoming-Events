@@ -21,6 +21,7 @@ public class WebSecurityConfig {
        .httpBasic()
                 .and().authorizeHttpRequests()
                 .antMatchers(HttpMethod.POST, "/api/events").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/register").hasAnyRole("USER")
                 .antMatchers(HttpMethod.GET, "/api/events").permitAll()
                 .and().csrf().disable().build();
     }

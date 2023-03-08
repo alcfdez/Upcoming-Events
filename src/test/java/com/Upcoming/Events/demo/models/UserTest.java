@@ -20,7 +20,7 @@ public class UserTest {
 
     @Test
     public void testCountryPersistedInDatabase() {
-        User paco = new User("Paco", "pass", null);
+        User paco = new User("Paco", "pass", null,null);
 
         entityManager.persist(paco);
         entityManager.flush();
