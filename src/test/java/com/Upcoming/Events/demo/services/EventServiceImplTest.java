@@ -1,4 +1,4 @@
-package com.Upcoming.Events.demo.services;
+package com.upcoming.events.demo.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
