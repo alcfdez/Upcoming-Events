@@ -16,6 +16,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import com.upcoming.events.demo.models.Event;
+import com.upcoming.events.demo.repositories.EventRepository;
 
 import com.upcoming.events.demo.models.Event;
 import com.upcoming.events.demo.repositories.EventRepository;
