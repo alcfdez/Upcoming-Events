@@ -127,7 +127,7 @@ const onReset = () => {
           text-color="white"
           color="white"
           type="date"
-          :input-style="{ color: 'white', fontSize: '1.7em'}"
+          :input-style="{ color: 'white', fontSize: '1.3em', marginBottom: '1.1em'}"
           lazy-rules="ondemand"
           bg-color="red"
           class="q-mt-lg"
