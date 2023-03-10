@@ -55,23 +55,6 @@ public class EventServiceImpl implements BaseService<Event>{
        eventRepository.deleteById(id);
     }
 
-     
-    // public void registerUserToEvent(Long eventId, Long userId) {
-    //     Event event = eventRepository.findById(eventId).orElseThrow(() -> new RuntimeException("Event not found"));
-    //     User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-        
-    //     if (event.getMax_participants() <= event.getActual_participants()) {
-    //         throw new RuntimeException("Event is full");
-    //     }
-        
-    //     event.getUsers().add(user);
-    //     event.setActual_participants(event.getActual_participants() + 1);
-    //     eventRepository.save(event);
-        
-    //     user.getEvents().add(event);
-    //     userRepository.save(user);
-    // }
-
     public void registerUserToEvent(Long eventId, Long userId) {
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new RuntimeException("Event not found with id " + eventId));

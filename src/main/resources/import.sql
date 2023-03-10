@@ -5,3 +5,5 @@ INSERT INTO events( id, title, date_hour, max_participants, description, actual_
 INSERT INTO events( id, title, date_hour, max_participants, description, actual_participants) VALUES (default,'Las Ketchup', '09/12/2023-15:00h',  90,  'Asere Jeee',  80)
 INSERT INTO users( id, username, password) VALUES (default,'Raul', 'qwerty12345' )
 INSERT INTO users( id, username, password) VALUES (default,'GobizConBambas', 'asas22' )
+INSERT INTO roles (id, name) VALUES (default,'ROLE_ADMIN')
+INSERT INTO roles (id, name) VALUES (default,'ROLE_USER')
