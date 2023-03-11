@@ -1,8 +1,9 @@
 <script setup>
+import axios from "axios";
 import { ref } from "vue";
 import { Notify, useQuasar } from "quasar";
 import { useRouter } from "vue-router";
-import axios from "axios";
+import AuthService from "src/services/auth/AuthService";
 
 let usernameModel = ref();
 
@@ -12,13 +13,32 @@ const router = useRouter();
 
 const $q = useQuasar();
 
-const onSubmit = async () => {
+// const onSubmit = async () => {
+//   };
+
+// const username = ref("");
+// const password = ref("");
+
+const submitData = async () => {
+  console.log(usernameModel.value);
+  console.log(passwordModel.value);
+  const authService = new AuthService();
+  try {
+    const response = await authService.login(usernameModel.value, passwordModel.value);
+    console.log("BIENVENID@ " + usernameModel.value);
+  } catch (error) {
+    console.error(error);
+    Notify.create({
+      color: "negative",
+      message: "Authentication failed",
+      position: "top",
+    });
+  }
   onReset();
 };
 
 const onReset = () => {
-  usernameModel.value = "",
-  passwordModel.value = ""
+  (usernameModel.value = ""), (passwordModel.value = "");
 };
 </script>
 
@@ -27,23 +47,31 @@ const onReset = () => {
     <q-img
       src="../assets/images/concierto-form.jpg"
       spinner-color="white"
-      class="col-0 col-xl-7 col-lg-7 col-md-7 "
+      class="col-0 col-xl-7 col-lg-7 col-md-7"
       height="100vh"
     />
 
     <div class="container-form column col-5 justify-between">
+      <div class="column container-icons space-between col-2">
+        <q-breadcrumbs-el
+          icon="fa-solid fa-house"
+          class="q-mt-xl pointer gt-sm"
+          color="white"
+          to="/"
+          style="font-size: 2em"
+        />
 
-<div class="column container-icons space-between col-2 ">
-  <q-breadcrumbs-el icon="fa-solid fa-house" class="q-mt-xl pointer gt-sm"  color="white" to="/" style="font-size:2em;" />
-    
-      <q-img
-        src="../assets/images/logo.png"
-        class="self-end q-mt-lg col-sm-12 logo"
+        <q-img
+          src="../assets/images/logo.png"
+          class="self-end q-mt-lg col-sm-12 logo"
+        />
+      </div>
 
-      />
-  </div>
-
-      <q-form @submit="onSubmit" @reset="onReset" class="form q-gutter-sm  self-end ">
+      <q-form
+        @submit="submitData"
+        @reset="onReset"
+        class="form q-gutter-sm self-end"
+      >
         <span class="text-white text-h3 text-weight-bold">Log-in</span>
         <q-input
           v-model="usernameModel"
@@ -54,7 +82,7 @@ const onReset = () => {
           text-color="white"
           color="white"
           type="text"
-          :input-style="{ color: 'white', fontSize: '1.7em'}"
+          :input-style="{ color: 'white', fontSize: '1.7em' }"
           lazy-rules="ondemand"
           bg-color="red"
           class="q-mt-xl"
@@ -82,12 +110,12 @@ const onReset = () => {
         />
 
         <q-btn
-            label="New Here?"
-            type="submit"
-            color="white"
-            class="q-py-md text-center button-new"
-            flat
-          />
+          label="New Here?"
+          type="submit"
+          color="white"
+          class="q-py-md text-center button-new"
+          flat
+        />
 
         <div class="row justify-between">
           <q-btn
@@ -109,7 +137,6 @@ const onReset = () => {
             flat
             class="col-5 q-py-md btn-reset"
           />
-
         </div>
       </q-form>
     </div>
@@ -117,39 +144,36 @@ const onReset = () => {
 </template>
 
 <style lang="scss" scoped>
-
 .btn-reset {
   border: 1px solid $brown;
   color: white;
 }
 
-.container-form{
+.container-form {
   height: 75vh;
 }
 
-.form{
+.form {
   width: 85%;
   margin: 0 auto;
 }
 
-.container-icons{
+.container-icons {
   margin: 0 auto;
   width: 84%;
 }
 
 .q-breadcrumbs__el {
-    color: white;
+  color: white;
 }
-.pointer{
+.pointer {
   cursor: pointer;
-  &:hover{
-  opacity: .7;
+  &:hover {
+    opacity: 0.7;
   }
 }
-.logo{
+.logo {
   width: 16em;
   height: 6em;
 }
-
-
 </style>

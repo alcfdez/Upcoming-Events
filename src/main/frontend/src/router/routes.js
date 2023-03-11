@@ -10,9 +10,9 @@ const router = createRouter({
       component: () => import('layouts/MainLayout.vue'),
       children: [
         { path: '',  name: 'index', component: () => import('pages/IndexPage.vue') },
-        { path: 'login',name:'formLogin', component: () => import('pages/auth/LoginView.vue'), meta: { requiresAuth : true } },
+        { path: 'login',name:'formLogin', component: () => import('pages/auth/LoginView.vue'),  },
         { path: 'formAdd',name:'formAdd', component: () => import('pages/FormAddPage.vue') },
-        { path: 'dashboard',name:'dashboard', component: () => import('pages/Dashboard.vue') }
+        { path: 'dashboard',name:'dashboard', component: () => import('pages/Dashboard.vue'), meta: { requiresAuth : true } }
       ]
     },
 
@@ -29,10 +29,6 @@ const router = createRouter({
 
 router.beforeEach( async (to,from)=>{
       const auth = useAuthStore();
-
-      if(to.meta.requiresAuth && !auth.isAuthenticate) {
-        return { name: "login" }
-      }
 
     })
 

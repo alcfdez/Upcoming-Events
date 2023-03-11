@@ -43,7 +43,7 @@ public class WebSecurityConfig {
                         .antMatchers("/api/register").permitAll()
                         .antMatchers( "/api/events").hasRole("ADMIN")
                         // .antMatchers( "/api/register/**").hasRole("USER")
-                        .antMatchers( "/api/login").hasAnyRole("ADMIN", "USER")
+                        .antMatchers( "/api/login").permitAll()
                         .anyRequest().permitAll())
                 .userDetailsService(service)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
