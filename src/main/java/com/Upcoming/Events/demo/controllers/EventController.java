@@ -37,6 +37,7 @@ public class EventController {
 //     eventService.registerUserToEvent(eventId, userId);
 //     return ResponseEntity.ok("User registered to event successfully");
 // }
+
 @Transactional
 @PostMapping("/{eventId}/participants/{userId}")
 public ResponseEntity<String> addParticipantToEvent(@PathVariable Long eventId, @PathVariable Long userId) {

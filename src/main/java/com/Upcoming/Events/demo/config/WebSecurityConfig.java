@@ -53,13 +53,13 @@ public class WebSecurityConfig {
       .authorizeRequests((auth) -> auth
                         .antMatchers("/api/register").permitAll()
                         .antMatchers( "/api/events").hasRole("ADMIN")
+                        // .antMatchers( "/api/register/**").hasRole("USER")
                         .antMatchers( "/api/login").hasAnyRole("ADMIN", "USER")
-                        .anyRequest().authenticated())
+                        .anyRequest().permitAll())
                 .userDetailsService(service)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .httpBasic(basic -> basic.authenticationEntryPoint(authenticationEntryPoint))
                 .httpBasic(Customizer.withDefaults());
-                // http.addFilterAfter(new CustomFilter(), BasicAuthenticationFilter.class);
                 return http.build();
     }
 
