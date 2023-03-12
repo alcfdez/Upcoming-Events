@@ -5,6 +5,12 @@ import { Notify, useQuasar } from "quasar";
 import { useRouter } from "vue-router";
 import AuthService from "src/services/auth/AuthService";
 
+let toggle = ref(false);
+
+const toggleButton = () => {
+  toggle.value = !toggle.value;
+}
+
 let usernameModel = ref();
 
 let passwordModel = ref();
@@ -12,12 +18,6 @@ let passwordModel = ref();
 const router = useRouter();
 
 const $q = useQuasar();
-
-// const onSubmit = async () => {
-//   };
-
-// const username = ref("");
-// const password = ref("");
 
 const submitData = async () => {
   console.log(usernameModel.value);
@@ -72,7 +72,8 @@ const onReset = () => {
         @reset="onReset"
         class="form q-gutter-sm self-end"
       >
-        <span class="text-white text-h3 text-weight-bold">Log-in</span>
+        <span v-if="!toggle" class="text-white text-h3 text-weight-bold">Log in</span>
+        <span v-if="toggle" class="text-white text-h3 text-weight-bold">Create account</span>
         <q-input
           v-model="usernameModel"
           label="Enter your username"
@@ -109,23 +110,62 @@ const onReset = () => {
           ]"
         />
 
-        <q-btn
-          label="New Here?"
-          type="submit"
+          <q-input
+          v-if="toggle"
+          v-model="passwordModel"
+          label="Repeat your password"
+          label-color="white"
+          outlined
+          rounded
+          text-color="white"
           color="white"
-          class="q-py-md text-center button-new"
-          flat
+          type="password"
+          lazy-rules="ondemand"
+          :input-style="{ color: 'white', fontSize: '1.7em' }"
+          bg-color="red"
+          class="q-mt-lg"
+          :rules="[
+            (val) => (val && val.length > 3) || 'This field is required',
+          ]"
+        />
+
+         <q-breadcrumbs-el
+         v-if="!toggle"
+         @click="toggleButton"
+         label="No account?"
+          class="q-m-xl pointer"
+          color="white"
+        />
+
+         <q-breadcrumbs-el
+         v-if="toggle"
+         @click="toggleButton"
+         label="Have an account?"
+          class="q-m-xl pointer"
+          color="white"
         />
 
         <div class="row justify-between">
           <q-btn
+            v-if="toggle"
             unelevated
             outlined
             rounded
-            label="Submit"
+            label="Sign In"
             type="submit"
             color="blue-1"
-            class="col-5 q-py-md"
+            class="col-5 q-py-md pointer"
+          />
+
+          <q-btn
+            v-if="!toggle"
+            unelevated
+            outlined
+            rounded
+            label="Log in"
+            type="submit"
+            color="blue-1"
+            class="col-5 q-py-md pointer"
           />
 
           <q-btn
@@ -135,7 +175,7 @@ const onReset = () => {
             type="reset"
             color="white"
             flat
-            class="col-5 q-py-md btn-reset"
+            class="col-5 q-py-md btn-reset pointer"
           />
         </div>
       </q-form>
@@ -176,4 +216,5 @@ const onReset = () => {
   width: 16em;
   height: 6em;
 }
+
 </style>

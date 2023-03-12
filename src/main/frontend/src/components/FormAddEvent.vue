@@ -62,7 +62,7 @@ const onReset = () => {
       />
   </div>
 
-      <q-form @submit="onSubmit" @reset="onReset" class="form q-gutter-xs  self-end ">
+      <q-form @submit="onSubmit" @reset="onReset" class="form q-gutter-sm self-end">
         <span class="text-white text-h3 text-weight-bold">Register New Event</span>
         <q-input
           v-model="titleModel"
@@ -134,14 +134,6 @@ const onReset = () => {
             (val) => (val && val.length > 1) || 'This field is required',
           ]"
         />
-
-        <q-btn
-            label="New Here?"
-            type="submit"
-            color="white"
-            class="q-py-md text-center button-new"
-            flat
-          />
 
         <div class="row justify-between">
           <q-btn
