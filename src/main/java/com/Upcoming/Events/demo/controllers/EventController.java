@@ -32,12 +32,6 @@ public class EventController {
         return ResponseEntity.status(HttpStatus.CREATED).body(eventService.save(event));
 }
 
-// @PostMapping("/{eventId}/register/{userId}")
-// public ResponseEntity<String> registerUserToEvent(@PathVariable("eventId") Long eventId, @PathVariable("userId") Long userId) {
-//     eventService.registerUserToEvent(eventId, userId);
-//     return ResponseEntity.ok("User registered to event successfully");
-// }
-
 @Transactional
 @PostMapping("/{eventId}/participants/{userId}")
 public ResponseEntity<String> addParticipantToEvent(@PathVariable Long eventId, @PathVariable Long userId) {

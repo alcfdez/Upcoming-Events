@@ -18,7 +18,7 @@ import { markRaw } from 'vue'
 import RootComponent from 'app/src/App.vue'
 
 import createStore from 'app/src/stores/index'
-import createRouter from 'app/src/router/routes.js'
+import createRouter from 'app/src/router/routes'
 
 
 
