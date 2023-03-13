@@ -3,6 +3,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name = "roles")
 public class Role {
 
@@ -46,6 +48,7 @@ public class Role {
     @Column(name= "name")
     String roleName;
     
+    @JsonIgnore
     @ManyToMany(mappedBy = "roles")
     List <User> users;
 

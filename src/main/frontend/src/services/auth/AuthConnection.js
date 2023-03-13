@@ -4,6 +4,7 @@ export default class AuthConnection {
 
   #baseUrl = "http://localhost:8080";
   #auth = "";
+  #role="";
 
   async login(username, password) {
     this.#auth = window.btoa(`${username}:${password}`).toString();
@@ -11,10 +12,12 @@ export default class AuthConnection {
     const response = await axios.get(`${this.#baseUrl}/api/login`, {
       headers: {
         Authorization: `Basic ${this.#auth}`
-      }
+      },
+      withCredentials: true
     });
 
-    console.log( this.#auth);
+    this.#role = response.data.role;
+    return this.#role;
   }
 }
 

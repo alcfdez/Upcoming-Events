@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import com.Upcoming.Events.demo.models.Event;
 import com.Upcoming.Events.demo.services.EventServiceImpl;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/events")
 public class EventController {
@@ -32,16 +31,16 @@ public class EventController {
         return ResponseEntity.status(HttpStatus.CREATED).body(eventService.save(event));
 }
 
-@Transactional
-@PostMapping("/{eventId}/participants/{userId}")
-public ResponseEntity<String> addParticipantToEvent(@PathVariable Long eventId, @PathVariable Long userId) {
-    try {
-        eventService.registerUserToEvent(eventId, userId);
-        return ResponseEntity.ok().body("User with id " + userId + " added to event with id " + eventId);
-    } catch (RuntimeException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
-    }
-}
+// @Transactional
+// @PostMapping("/{eventId}/participants/{userId}")
+// public ResponseEntity<String> addParticipantToEvent(@PathVariable Long eventId, @PathVariable Long userId) {
+//     try {
+//         eventService.registerUserToEvent(eventId, userId);
+//         return ResponseEntity.ok().body("User with id " + userId + " added to event with id " + eventId);
+//     } catch (RuntimeException e) {
+//         return ResponseEntity.badRequest().body(e.getMessage());
+//     }
+// }
 
 //Leer un usuario
 @Transactional

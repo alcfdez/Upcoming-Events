@@ -14,7 +14,9 @@ class EventsService {
 
   async fetchAll() {
     try {
-      await axios.get("http://localhost:8080/api/events").then((response) => {
+      await axios.get("http://localhost:8080/api/events"),{
+      withCredentials: true
+      }.then((response) => {
         this.events.value = response.data;
       });
     } catch (err) {}

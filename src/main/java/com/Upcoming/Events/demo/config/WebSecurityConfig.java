@@ -40,15 +40,12 @@ public class WebSecurityConfig {
                         .logoutUrl("/api/logout")
                         .deleteCookies("JSESSIONID"))   
       .authorizeRequests((auth) -> auth
-                        .antMatchers("/api/register").permitAll()
-                        .antMatchers( "/api/events").hasRole("ADMIN")
-                        // .antMatchers( "/api/register/**").hasRole("USER")
-                        .antMatchers( "/api/login").permitAll()
+                        .antMatchers("/api/register", "/api/events", "/api/login").permitAll()
+                        .antMatchers("/api/events").hasRole("USER")
                         .anyRequest().permitAll())
                 .userDetailsService(service)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .httpBasic(basic -> basic.authenticationEntryPoint(authenticationEntryPoint));
-                // .httpBasic(Customizer.withDefaults());
                 return http.build();
     }
 

@@ -10,15 +10,12 @@ const router = createRouter({
       component: () => import('layouts/MainLayout.vue'),
       children: [
         { path: '',  name: 'index', component: () => import('pages/IndexPage.vue') },
-        { path: 'login',name:'formLogin', component: () => import('pages/auth/LoginView.vue'),  },
-        { path: 'formAdd',name:'formAdd', component: () => import('pages/FormAddPage.vue') },
+        { path: 'login',name:'login', component: () => import('pages/auth/LoginView.vue'),  },
+        { path: 'addEvent',name:'addEvent', component: () => import('pages/FormAddPage.vue') },
+        { path: 'register',name:'register', component: () => import('pages/auth/RegisterView.vue') },
         { path: 'dashboard',name:'dashboard', component: () => import('pages/Dashboard.vue'), meta: { requiresAuth : true } }
       ]
     },
-
-    // Always leave this as last one,
-
-    // but you can also remove it
     {
       path: '/:catchAll(.*)*',
       component: () => import('pages/ErrorNotFound.vue')
@@ -31,8 +28,5 @@ router.beforeEach( async (to,from)=>{
       const auth = useAuthStore();
 
     })
-
-
-
 
 export default router

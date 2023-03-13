@@ -4,52 +4,47 @@ import { ref } from "vue";
 import { Notify, useQuasar } from "quasar";
 import { useRouter } from "vue-router";
 import AuthService from "src/services/auth/AuthService";
-import { useAuthStore }  from "src/stores/authStore"
-
-const auth = useAuthStore();
-
 
 let usernameModel = ref();
 let passwordModel = ref();
+let passwordRepeatModel= ref();
+
 const router = useRouter();
+
 const $q = useQuasar();
 
 const submitData = async () => {
   const authService = new AuthService();
   try {
-    const role = await authService.login(
+    const response = await authService.register(
       usernameModel.value,
       passwordModel.value
     );
-     Notify.create({
-       color: "positive",
-       message: "Welcome " + usernameModel.value + ", your role is: " + role,
+      Notify.create({
+      color: "positive",
+      message: "You have successfully created your account. Welcome, " + usernameModel.value,
       position: "top"
     })
-  auth.setRole(role);
-  auth.setUsername(usernameModel.value);
-  auth.setIsAuthenticated();
-  console.log(auth.isAuthenticate, auth.roles, auth.username);
   } catch (error) {
     console.error(error);
     Notify.create({
       color: "negative",
-      message: "Authentication failed",
+      message: "This username already exists",
       position: "top",
     });
-  }
+}
   onReset();
-};
+}
 
 const onReset = () => {
-  (usernameModel.value = ""), (passwordModel.value = "");
+  (usernameModel.value = ""), (passwordModel.value = ""), (passwordRepeatModel.value = "");
 };
 </script>
 
 <template>
   <q-page class="row justify-center text-center bg-blue">
     <q-img
-      src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29uY2llcnRvfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+      src="https://thred.com/wp-content/uploads/2023/03/danny-howe-bn-D2bCvpik-unsplash-1920x1120.jpg"
       spinner-color="white"
       class="col-0 col-xl-7 col-lg-7 col-md-7"
       height="100vh"
@@ -74,9 +69,9 @@ const onReset = () => {
       <q-form
         @submit="submitData"
         @reset="onReset"
-        class="form q-gutter-sm self-end"
+        class="form q-gutter-lg self-end"
       >
-        <span class="text-white text-h3 text-weight-bold">Log in</span>
+        <span class="text-white text-h3 text-weight-bold">Create account</span>
         <q-input
           v-model="usernameModel"
           label="Enter your username"
@@ -113,9 +108,27 @@ const onReset = () => {
           ]"
         />
 
+        <q-input
+          v-model="passwordRepeatModel"
+          label="Repeat your password"
+          label-color="white"
+          outlined
+          rounded
+          text-color="white"
+          color="white"
+          type="password"
+          lazy-rules="ondemand"
+          :input-style="{ color: 'white', fontSize: '1.7em' }"
+          bg-color="red"
+          class="q-mt-lg"
+          :rules="[
+            (val) => (val && val === passwordModel) || 'Passwords do not match',
+          ]"
+        />
+
         <q-breadcrumbs-el
-          to="/register"
-          label="No account?"
+          label="Already have an account?"
+          to="/login"
           class="q-m-xl pointer"
           color="white"
         />
@@ -125,7 +138,7 @@ const onReset = () => {
             unelevated
             outlined
             rounded
-            label="Log in"
+            label="Sign In"
             type="submit"
             color="blue-1"
             class="col-5 q-py-md pointer"

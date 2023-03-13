@@ -4,6 +4,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "events")
 public class Event {
@@ -44,6 +46,7 @@ public class Event {
         this.users = users;
     }
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "events", fetch = FetchType.EAGER)
     Set<User> users;
 
