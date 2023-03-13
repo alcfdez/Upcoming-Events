@@ -17,6 +17,7 @@ const columns = [
     align: "center",
     sortable: true,
   },
+  { name: "Image", align: "left", label: "Image", field: "Image" },
   {
     name: "Description",
     align: "center",
@@ -64,6 +65,14 @@ function getSelectedString(rows) {
       <!-- <template #body-cell-imagen="{ rows }">
         <q-img :src="rows" />
       </template> -->
+      <template #body-cell-Image>
+        <q-td align="center">
+    
+            <q-img src="../assets/images/bonjovi.jpg"></q-img>
+
+          
+        </q-td>
+      </template>
 
       <template #body-cell-Actions>
         <q-td align="center">
@@ -82,6 +91,8 @@ function getSelectedString(rows) {
       <template v-slot:header-selection="scope">
         <q-toggle v-model="scope.selected" />
       </template>
+
+     
 
       <template v-slot:body-selection="scope">
         <q-toggle v-model="scope.selected" />
