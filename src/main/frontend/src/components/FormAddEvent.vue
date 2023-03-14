@@ -21,7 +21,7 @@ const onSubmit = async () => {
       max_participants: parseInt(capacityModel.value),
       description: descriptionModel.value,
       actual_participants: 200,
-      style: musicStyleModel.value
+      style: musicStyleModel.options
     },
   })
     .then((res) =>
@@ -47,18 +47,16 @@ const options = ['dance', 'pop', 'rock', 'latina', 'alternativa', 'hiphop', 'met
 // const model = ref(null)
 
 
-//  = ({
-//   setup () {
-//     return {
-//       musicStyleModel,
-//       options: [
-//         { label: 'dance', value: 'dance', icon: 'ruta_a_la_imagen1' },
-//         { label: 'pop', value: 'pop', icon: 'ruta_a_la_imagen2' },
-//         { label: 'rock 3', value: 'rock 3', icon: 'ruta_a_la_imagen3' },
-//       ]
-//     }
-//   }
-// })
+
+ 
+    //  const options =[
+    //     { label: 'dance', value: '/dance.png' },
+    //     { label: 'pop', value: '/pop.png' },
+    //     { label: 'rock', value: '/rock.png' }
+    //   ]
+
+    
+
      
 
 </script>

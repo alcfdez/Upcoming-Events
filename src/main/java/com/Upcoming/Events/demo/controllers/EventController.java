@@ -25,6 +25,12 @@ public class EventController {
 //Crear nuevo usuario
 @PostMapping(value ="", consumes = "application/*") 
     public ResponseEntity<?> create(@RequestBody Event event) {
+
+        System.out.println("----------------------------");
+        System.out.println(event.getTitle());
+        System.out.println(event.getStyle());
+        System.out.println("----------------------------");
+
         return ResponseEntity.status(HttpStatus.CREATED).body(eventService.save(event));
 }
 //Leer un usuario
