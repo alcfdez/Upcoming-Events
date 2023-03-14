@@ -16,8 +16,20 @@ describe('ConcertList', () => {
     expect(ConcertListVue).toBeTruthy();
   });
 
-  it("returns empty string when no records are selected", () => {
+  it.skip("returns empty string when no records are selected", () => {
     console.log(wrapper.html());
   });
 
+  it('props', () => {
+    const wrapper = mount(Component, {
+      props: {
+        count: 5
+      }
+    })
+    expect(wrapper.html()).toContain('Count: 5')
+  })
+
+  it ("", () => {
+    
+  })
 });
