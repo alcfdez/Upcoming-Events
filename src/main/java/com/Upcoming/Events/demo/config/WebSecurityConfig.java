@@ -41,10 +41,10 @@ public class WebSecurityConfig {
                         .deleteCookies("JSESSIONID"))   
       .authorizeRequests((auth) -> auth
                         .antMatchers("/api/register", "/api/login").permitAll()
-                        .antMatchers("/api/events").authenticated()
+                        .antMatchers("/api/events").hasAnyRole("USER","ADMIN")
                         .anyRequest().permitAll())
                 .userDetailsService(service)
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                 .httpBasic(basic -> basic.authenticationEntryPoint(authenticationEntryPoint));
                 return http.build();
     }

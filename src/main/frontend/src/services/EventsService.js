@@ -13,13 +13,12 @@ class EventsService {
   }
 
   async fetchAll() {
+    axios.defaults.withCredentials = "include";
     try {
-      await axios.get("http://localhost:8080/api/events"),{
-        withCredentials: true
-      };
-    } catch (err) {
-      console.log(err)
-    }
+      await axios.get("http://localhost:8080/api/events").then((response) => {
+        this.events.value = response.data;
+      });
+    } catch (err) {}
   }
 
   // async deleteEvent(props, rows) {
