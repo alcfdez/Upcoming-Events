@@ -56,7 +56,7 @@ public ResponseEntity<?> read(@PathVariable Long id){
     event.get().setDate_hour(eventDetails.getDate_hour());
     event.get().setMax_participants(eventDetails.getMax_participants());
     event.get().setDescription(eventDetails.getDescription());
-    // event.get().setId_image(eventDetails.getId_image());
+    event.get().setMusicStyle(eventDetails.getMusicStyle());
     event.get().setActual_participants(eventDetails.getActual_participants());
 
     return ResponseEntity.status(HttpStatus.CREATED).body(eventService.save(event.get()));
