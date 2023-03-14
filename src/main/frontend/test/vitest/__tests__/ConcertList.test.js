@@ -16,7 +16,7 @@ describe('ConcertList', () => {
     expect(ConcertListVue).toBeTruthy();
   });
 
-  it.skip("returns empty string when no records are selected", () => {
+  it("returns empty string when no records are selected", () => {
     console.log(wrapper.html());
   });
 
