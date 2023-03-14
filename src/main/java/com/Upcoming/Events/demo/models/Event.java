@@ -33,7 +33,7 @@ public class Event {
     private String description;
 
     @Column (name = "style")
-    private String style;
+     String style;
 
     @Column (name = "actual_participants")
     private int actual_participants;
@@ -45,7 +45,16 @@ public class Event {
         return id;
     }
 
- 
+    public Event(long id, String title, Date date_hour, int max_participants, String description, String style,
+            int actual_participants) {
+        this.id = id;
+        this.title = title;
+        this.date_hour = date_hour;
+        this.max_participants = max_participants;
+        this.description = description;
+        this.style = style;
+        this.actual_participants = actual_participants;
+    }
 
     public String getTitle() {
         return title;

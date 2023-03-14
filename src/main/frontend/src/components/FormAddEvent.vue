@@ -44,21 +44,21 @@ const onReset = () => {
 };
 
 const options = ['dance', 'pop', 'rock', 'latina', 'alternativa', 'hiphop', 'metal']
-const model = ref(null)
+// const model = ref(null)
 
 
-const selectEvent = ({
-  setup () {
-    return {
-      model,
-      options: [
-        { label: 'dance', value: 'dance', icon: 'ruta_a_la_imagen1' },
-        { label: 'pop', value: 'pop', icon: 'ruta_a_la_imagen2' },
-        { label: 'rock 3', value: 'rock 3', icon: 'ruta_a_la_imagen3' },
-      ]
-    }
-  }
-})
+//  = ({
+//   setup () {
+//     return {
+//       musicStyleModel,
+//       options: [
+//         { label: 'dance', value: 'dance', icon: 'ruta_a_la_imagen1' },
+//         { label: 'pop', value: 'pop', icon: 'ruta_a_la_imagen2' },
+//         { label: 'rock 3', value: 'rock 3', icon: 'ruta_a_la_imagen3' },
+//       ]
+//     }
+//   }
+// })
      
 
 </script>
@@ -178,7 +178,7 @@ const selectEvent = ({
         <!-- Select -->
         <q-select 
         rounded standout 
-        v-model="model" 
+        v-model="musicStyleModel" 
         :options="options" 
         label="Select an event"
         bg-color="red"
