@@ -5,7 +5,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,9 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import com.upcoming.events.demo.models.Event;
-import com.upcoming.events.demo.repositories.EventRepository;
-
 import com.upcoming.events.demo.models.Event;
 import com.upcoming.events.demo.repositories.EventRepository;
 import com.upcoming.events.demo.services.EventServiceImpl;
