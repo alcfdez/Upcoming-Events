@@ -15,11 +15,11 @@ class EventsService {
   async fetchAll() {
     try {
       await axios.get("http://localhost:8080/api/events"),{
-      withCredentials: true
-      }.then((response) => {
-        this.events.value = response.data;
-      });
-    } catch (err) {}
+        withCredentials: true
+      };
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   // async deleteEvent(props, rows) {

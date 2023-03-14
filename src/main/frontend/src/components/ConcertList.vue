@@ -3,9 +3,8 @@ import { ref, defineProps, reactive } from "vue";
 const selected = ref([]);
 
 const props = defineProps({
-  event: {
-    type: Object,
-  },
+  event: Object,
+  userRoles: Array
 });
 
 const columns = [

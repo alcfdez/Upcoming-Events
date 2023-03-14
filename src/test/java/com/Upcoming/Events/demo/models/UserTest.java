@@ -1,4 +1,4 @@
-package com.Upcoming.Events.demo.models;
+package com.Upcoming.events.demo.models;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,6 +16,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.Upcoming.Events.demo.repositories.AuthorityRepository;
 import com.Upcoming.Events.demo.repositories.UserRepository;
+import com.Upcoming.Events.demo.models.Role;
+import com.Upcoming.Events.demo.models.User;
 
 
 

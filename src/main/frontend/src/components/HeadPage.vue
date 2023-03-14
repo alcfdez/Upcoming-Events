@@ -2,8 +2,11 @@
 import { ref } from 'vue';
 import { Notify, useQuasar } from "quasar";
 import { useRouter } from 'vue-router';
+import { useAuthStore }  from "src/stores/authStore"
 
-
+const auth = useAuthStore();
+const roles = ref(auth.roles[0]);
+console.log(auth.roles[0])
 
 const router = useRouter();
 
@@ -18,11 +21,12 @@ const $q= useQuasar();
         <q-breadcrumbs-el icon="fa-solid fa-house" to="/" style="font-size:2em;" />
 
         <span class="title_header text-h2">MUSIC EVENTS</span>
-        <q-breadcrumbs-el icon="fa-solid fa-user" to= "/addEvent" style="font-size:2em;" color="white" />
+        <q-breadcrumbs-el icon="fa-solid fa-user" to= "/login" v-if="roles === undefined" style="font-size:2em;" color="white" />
+        <q-breadcrumbs-el icon="fa-solid fa-user" to= "/favorites" v-if="roles === 'ROLE_USER'" style="font-size:2em;" color="white" />
+        <q-breadcrumbs-el icon="fa-solid fa-calendar-plus" v-else-if="roles==='ROLE_ADMIN'" to= "/addEvent" style="font-size:2em;" color="white" />
       </div>
       </q-header>
 </template>
-
 <style lang="scss" scoped>
 
 

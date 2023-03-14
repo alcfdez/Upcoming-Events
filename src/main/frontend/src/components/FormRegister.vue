@@ -51,7 +51,7 @@ const onReset = () => {
     />
 
     <div class="container-form column col-5 justify-between">
-      <div class="column container-icons space-between col-2">
+      <div class="column container-icons space-between col-1">
         <q-breadcrumbs-el
           icon="fa-solid fa-house"
           class="q-mt-xl pointer gt-sm"
@@ -166,7 +166,7 @@ const onReset = () => {
 }
 
 .container-form {
-  height: 75vh;
+  height: 85vh;
 }
 
 .form {
