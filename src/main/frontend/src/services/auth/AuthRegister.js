@@ -11,7 +11,7 @@ export default class AuthRegister {
     const user = {
       username: username,
       password: password,
-      roles: [{ id: 2 }]
+      roles: [{ id: 1 }]
     };
 
     const response = await axios.post(`${this.#baseUrl}/api/register`, user);
