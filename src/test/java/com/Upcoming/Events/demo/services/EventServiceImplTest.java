@@ -1,4 +1,4 @@
-package com.Upcoming.Events.demo.services;
+package com.upcoming.events.demo.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -16,6 +16,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0be9e50ad31fa4a93d67b6de711199d9ed629d89
 import com.upcoming.events.demo.models.Event;
 import com.upcoming.events.demo.repositories.EventRepository;
 
