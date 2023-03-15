@@ -36,10 +36,10 @@ public class EventServiceImpl implements BaseService<Event>{
     @Override
     @Transactional
     public Event save(Event event) {
-
-    //   if (event.getStyle() == "rock")  {
-    //     event.setStyle("/rock.png");
-    //   }
+//Prueba para setear los estilos de música(16/03/2023):
+      if (event.getStyle() == "rock")  {
+        event.setStyle("/rock.png");
+      }
         return eventRepository.save(event);
     }
 

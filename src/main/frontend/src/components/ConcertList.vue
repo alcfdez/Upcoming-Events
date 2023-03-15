@@ -8,14 +8,7 @@ const props = defineProps({
   event: {
     type: Object,
   }
-  // el: '#imagenes',
-  // data: {
-  //   // checkedNames: []
-  //   return:
-  //      [
-  //       { url: "https://cdn.quasar.dev/img/avatar.png" }
-  //     ]
-  // }
+
 });
 
 const columns = [
@@ -27,15 +20,8 @@ const columns = [
     align: "center",
     sortable: true,
   },
-  { name: "MusicStyle", align: "left", label: "Music Style", field: "musicStyle" },
-  // {
-  //   name: "rows",
-  //   required: true,
-  //   label: "rows",
-  //   field: "rows",
-  //   align: "center",
-  //   sortable: true,
-  // },
+  { name: "MusicStyle", align: "left", label: "Music Style", field: "style" },
+
   {
     name: "Description",
     align: "center",
@@ -68,7 +54,7 @@ function getSelectedString(rows) {
     selected.value.length > 1 ? "s" : ""
   } selected of ${rows}`;
 };
-
+//Código para botón delete, en prueba. 
 const deleteEventRow = async (props, rows) =>  {
 
     //   // try {
@@ -100,17 +86,13 @@ const deleteEventRow = async (props, rows) =>  {
       v-model:selected="selected"
     >
 
-    <template #body-cell-#body-cell-MusicStyle>
+    <template #body-cell-#body-cell-style>
         <q-td align="center">
     
             <q-img src="http://localhost:8080/rock.png"></q-img>
           
         </q-td>
       </template>
-
-      <!-- <template #body-cell-rows>
-        <q-img src="http://localhost:8080/rock.png" />
-      </template> -->
 
       <template #body-cell-Actions>
         <q-td align="center">

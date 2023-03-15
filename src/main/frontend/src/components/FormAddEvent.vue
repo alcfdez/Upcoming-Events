@@ -21,7 +21,8 @@ const onSubmit = async () => {
       max_participants: parseInt(capacityModel.value),
       description: descriptionModel.value,
       actual_participants: 200,
-      style: musicStyleModel.options
+      //Se cambió Image por style
+      style: musicStyleModel.value
     },
   })
     .then((res) =>
@@ -42,22 +43,8 @@ const onReset = () => {
   capacityModel.value = "",
   musicStyleModel.value = ""
 };
-
+//Opciones select de estilos de música
 const options = ['dance', 'pop', 'rock', 'latina', 'alternativa', 'hiphop', 'metal']
-// const model = ref(null)
-
-
-
- 
-    //  const options =[
-    //     { label: 'dance', value: '/dance.png' },
-    //     { label: 'pop', value: '/pop.png' },
-    //     { label: 'rock', value: '/rock.png' }
-    //   ]
-
-    
-
-     
 
 </script>
 
@@ -173,7 +160,7 @@ const options = ['dance', 'pop', 'rock', 'latina', 'alternativa', 'hiphop', 'met
             (val) => (val && val.length > 1) || 'This field is required',
           ]"
         />
-        <!-- Select -->
+        <!-- Este es el Select -->
         <q-select 
         rounded standout 
         v-model="musicStyleModel" 
@@ -185,17 +172,6 @@ const options = ['dance', 'pop', 'rock', 'latina', 'alternativa', 'hiphop', 'met
         
          />
          
-         <!-- <q-select v-model="selected" :options="opciones">
-  <template v-slot:option="{ opt }">
-    <div class="q-item q-item-type-thumbnail q-align-center">
-      <q-item-section>
-        <q-img :src="opt.icon" width="20" height="20" />
-      </q-item-section>
-      <q-item-section>{{ opt.label }}</q-item-section>
-    </div>
-  </template>
-</q-select> -->
-
 
         <q-btn
             label="New Here?"
