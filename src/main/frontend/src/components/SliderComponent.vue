@@ -19,6 +19,7 @@
         v-model="slide"
         height="30vh"
         :autoplay="autoplay"
+        class="col-sm-0 col-md-7 col-lg-7 gt-xs"
 
       >
         <q-carousel-slide name="first" img-src="../assets/images/AltJ.jpg">
@@ -62,6 +63,8 @@
   </template>
 
   <style lang="scss" scoped>
+  @use "../css/mixins.scss" as m;
+
   .custom-caption {
     text-align: center;
     padding: 12px;
@@ -71,5 +74,8 @@
 
   .carousel {
     width: 80%;
+    @include m.mv(1200px){
+            width: 90%;
+          }
   }
   </style>

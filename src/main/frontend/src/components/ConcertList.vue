@@ -60,6 +60,7 @@ function getSelectedString(rows) {
       :selected-rows-label="getSelectedString"
       selection="multiple"
       v-model:selected="selected"
+      :grid="$q.screen.lt.md"
     >
       <!-- <template #body-cell-imagen="{ rows }">
         <q-img :src="rows" />
@@ -90,15 +91,24 @@ function getSelectedString(rows) {
   </div>
 </template>
 <style lang="scss">
+@use "../css/mixins.scss" as m;
 .q-pa-md {
   width: 80vw;
+  @include m.mv(1200px){
+            width: 90vw;
+          }
   .q-table {
     thead {
       background-color: #d9d9d9;
+      
     }
     th {
       text-align: center;
       font-size: 1.5em;
+      @include m.mv(1200px){
+                  font-size: 1em;
+          }
+          
     }
     tbody {
       background-color: #b7b7b7;
@@ -107,6 +117,12 @@ function getSelectedString(rows) {
         overflow-x: auto;
         font-size: 1.2em;
         font-weight: 500;
+        @include m.mv(1200px){
+                  font-size: .8em;
+          }
+          @include m.mv(800px){
+                  font-size: .6em;
+          }
         &:nth-child(2) {
           background-color: #9e0404;
           color: white;
@@ -136,6 +152,12 @@ function getSelectedString(rows) {
     }
   }
 }
+.q-btn{
+  @include m.mv(1000px){
+                  font-size: 1em;
+          }
+}
+
 .q-img {
   height: 15vh;
   width: 15vw;

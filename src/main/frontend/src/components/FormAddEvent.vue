@@ -46,7 +46,7 @@ const onReset = () => {
     <q-img
       src="../assets/images/concierto-form.jpg"
       spinner-color="white"
-      class="col-0 col-xl-7 col-lg-7 col-md-7 "
+      class="col-7 gt-xs"
       height="100vh"
     />
 
@@ -62,8 +62,8 @@ const onReset = () => {
       />
   </div>
 
-      <q-form @submit="onSubmit" @reset="onReset" class="form q-gutter-xs  self-end ">
-        <span class="text-white text-h3 text-weight-bold">Register New Event</span>
+      <q-form @submit="onSubmit" @reset="onReset" class="form q-gutter-xs self-end col-9 ">
+        <span class="title text-white text-h3 text-weight-bold">Register New Event</span>
         <q-input
           v-model="titleModel"
           label="Enter event name"
@@ -190,6 +190,8 @@ const onReset = () => {
 </template>
 
 <style lang="scss" scoped>
+@use "../css/mixins.scss" as m;
+
 .btn-reset {
   border: 1px solid $brown;
   color: white;
@@ -197,16 +199,29 @@ const onReset = () => {
 
 .container-form{
   height: 90vh;
+  @include m.mv(1100px){
+    height:80vh;
+
+          }
+  @include m.mv(600px){
+    width: 100%;
+
+          }
 }
 
 .form{
   width: 85%;
   margin: 0 auto;
+  @include m.mv(600px){
+    width: 100%;
+
+          }
 }
 
 .container-icons{
   margin: 0 auto;
   width: 84%;
+  
 }
 
 .q-breadcrumbs__el {
@@ -221,5 +236,24 @@ const onReset = () => {
 .logo{
   width: 16em;
   height: 6em;
+  @include m.mv(1200px){
+    margin: 0 auto;
+            width: 50%;
+            height: 50%;
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+
+          @include m.mv(900px){
+
+            margin-top: 1em;
+            margin-bottom: 0;
+          }
+}
+
+.title{
+  @include m.mv(1200px){
+    font-size: 1.5em;
+}
 }
 </style>
