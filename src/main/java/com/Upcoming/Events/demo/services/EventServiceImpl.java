@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-<<<<<<< HEAD
-=======
 
->>>>>>> 0be9e50ad31fa4a93d67b6de711199d9ed629d89
 import com.upcoming.events.demo.models.Event;
 import com.upcoming.events.demo.repositories.EventRepository;
 
