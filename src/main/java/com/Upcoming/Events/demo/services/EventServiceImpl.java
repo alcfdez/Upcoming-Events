@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
 import org.springframework.stereotype.Service;
 import com.Upcoming.Events.demo.models.Event;
 import com.Upcoming.Events.demo.repositories.EventRepository;
@@ -35,6 +36,10 @@ public class EventServiceImpl implements BaseService<Event>{
     @Override
     @Transactional
     public Event save(Event event) {
+//Prueba para setear los estilos de música(16/03/2023):
+      if (event.getStyle() == "rock")  {
+        event.setStyle("/rock.png");
+      }
         return eventRepository.save(event);
     }
 

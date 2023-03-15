@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import com.Upcoming.Events.demo.models.User;
+// import com.Upcoming.Events.demo.models.User;
 
 import javax.persistence.EntityManager;
 
