@@ -70,7 +70,10 @@ const deleteEventRow = async (props, rows) =>  {
         // }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> deleteMethod
 </script>
 
 <template>

@@ -1,4 +1,4 @@
-package com.Upcoming.Events.demo.models;
+package com.upcoming.events.demo.models;
 
 import java.sql.Date;
 import javax.persistence.Column;
@@ -50,6 +50,9 @@ public class Event {
         this.description = description;
         this.style = style;
         this.actual_participants = actual_participants;
+    }
+
+    public Event(String string, Object object, int i, String string2, int j) {
     }
 
     public String getTitle() {
