@@ -1,4 +1,4 @@
-package com.Upcoming.Events.demo;
+package com.upcoming.events.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

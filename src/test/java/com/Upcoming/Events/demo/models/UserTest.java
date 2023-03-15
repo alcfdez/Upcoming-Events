@@ -1,4 +1,4 @@
-package com.Upcoming.Events.demo.models;
+package com.upcoming.events.demo.models;
 
 
 import static org.assertj.core.api.Assertions.*;

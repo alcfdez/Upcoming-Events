@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0be9e50ad31fa4a93d67b6de711199d9ed629d89
 import com.upcoming.events.demo.models.User;
 import com.upcoming.events.demo.services.UserServiceImpl;
 

@@ -48,6 +48,7 @@ function getSelectedString(rows) {
         selected.value.length > 1 ? "s" : ""
       } selected of ${rows}`;
 }
+
 </script>
 
 <template>
