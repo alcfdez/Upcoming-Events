@@ -1,15 +1,37 @@
 <script setup>
-import { ref, defineProps, reactive } from "vue";
-const selected = ref([]);
+import { ref, defineProps, reactive, onBeforeMount } from "vue";
+import axios from 'axios'
+// const selected = ref([]);
+import EventsService from "../services/EventsService.js"
+import { useAuthStore }  from "src/stores/authStore"
 
+const auth = useAuthStore();
+console.log(auth.roles[0])
+
+const service = new EventsService;
+const events = reactive(service.getEvents());
+
+onBeforeMount(async () => {
+  await service.fetchAll();
+  console.log(events.value)
+})
 const props = defineProps({
   event: Object,
   userRoles: Array,
 });
 
 const roles = ref(props.userRoles[0]);
-console.log(roles.value);
+// console.log(roles.value);
+// console.log(props.event);
 const columns = [
+   {
+    name: "id",
+    required: true,
+    label: "id",
+    field: "id",
+    align: "center",
+    sortable: true,
+  },
   {
     name: "title",
     required: true,
@@ -49,13 +71,27 @@ function getSelectedString(rows) {
         selected.value.length > 1 ? "s" : ""
       } selected of ${rows}`;
 }
+
+ const deleteEvent= async (props, rows) => {
+  console.log(props.id)
+    try {
+      axios
+        .delete("http://localhost:8080/api/events/" + props.id)
+        .then((res) => {
+          const index = events.value.findIndex((row) => row.id === props.id);
+          events.value.splice(index, 1);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 </script>
 
 <template>
   <div class="list q-pa-md">
     <q-table
       class="bg-grey-4"
-      :rows="props.event"
+      :rows="events"
       :columns="columns"
       row-key="name"
       :selected-rows-label="getSelectedString"
@@ -66,7 +102,7 @@ function getSelectedString(rows) {
         <q-img :src="rows" />
       </template> -->
 
-      <template #body-cell-Actions>
+      <template #body-cell-Actions="{ row }">
         <q-td align="center">
           <q-btn
             push
@@ -88,6 +124,7 @@ function getSelectedString(rows) {
             push
             color="red"
             label="delete"
+            @click="deleteEvent(row)"
             v-if="roles === 'ROLE_ADMIN'"
           />
           <q-btn

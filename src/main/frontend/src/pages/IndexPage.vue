@@ -3,19 +3,19 @@ import { reactive, onBeforeMount } from 'vue';
 import SliderComponent from 'src/components/SliderComponent.vue';
 import HeadPage from  '../components/HeadPage.vue'
 import ConcertList  from  '../components/ConcertList.vue'
-import EventsService from "../services/EventsService.js"
+// import EventsService from "../services/EventsService.js"
 import { useAuthStore }  from "src/stores/authStore"
 
 const auth = useAuthStore();
 console.log(auth.roles[0])
 
-const service = new EventsService;
-const events = reactive(service.getEvents());
+// const service = new EventsService;
+// const events = reactive(service.getEvents());
 
-onBeforeMount(async () => {
-  await service.fetchAll();
-  console.log(events.value)
-})
+// onBeforeMount(async () => {
+//   await service.fetchAll();
+//   console.log(events.value)
+// })
 </script>
 
 <template>
