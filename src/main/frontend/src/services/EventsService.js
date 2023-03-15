@@ -28,6 +28,7 @@ class EventsService {
           const index = rows.value.findIndex((row) => row.id === props.id);
           rows.value.splice(index, 1);
         });
+  
     } catch (err) {
       console.log(err);
     }

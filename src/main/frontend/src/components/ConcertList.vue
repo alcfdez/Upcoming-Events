@@ -8,7 +8,6 @@ const props = defineProps({
   event: {
     type: Object,
   }
-
 });
 
 const columns = [
@@ -55,26 +54,42 @@ function getSelectedString(rows) {
   } selected of ${rows}`;
 };
 //Código para botón delete, en prueba. 
-const deleteEventRow = async (props, rows) =>  {
+// const deleteEventRow = async (props, rows) =>  {
 
-    //   // try {
-    //   //   axios
-    //   //     .delete("http://localhost:9000/api/events/" + props.id)
-    //   //     .then((res) => {
-    //   //       const index = rows.value.findIndex((row) => row.id === props.id);
-    //   //       rows.value.splice(index, 1);
-    // });
-    console.log(props);
-        // } catch (err) {
-        //   console.log(err);
-        // }
-}
+//     //   // try {
+//     //   //   axios
+//     //   //     .delete("http://localhost:9000/api/events/" + props.id)
+//     //   //     .then((res) => {
+//     //   //       const index = rows.value.findIndex((row) => row.id === props.id);
+//     //   //       rows.value.splice(index, 1);
+//     // });
+//     // console.log(props);
+//         // } catch (err) {
+//         //   console.log(err);
+//         // }
+// }
+
+ function deleteEvent(props, rows) {
+    try {
+      axios
+        .delete("/" + props.id)
+        .then((res) => {
+          const index = rows.value.findIndex((row) => row.id === props.id);
+          rows.value.splice(index, 1);
+        });
+console.log(props);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
 
 
 </script>
 
 <template>
   <div class="list q-pa-md">
+  <h1>Hola mundo</h1>
   <div id="example-3">
     <q-table
       class="bg-grey-4"
@@ -86,7 +101,8 @@ const deleteEventRow = async (props, rows) =>  {
       v-model:selected="selected"
     >
 
-    <template #body-cell-#body-cell-style>
+    <!-- <template #body-cell-#body-cell-style> -->
+      <template #body-cell-style>
         <q-td align="center">
     
             <q-img src="http://localhost:8080/rock.png"></q-img>
@@ -103,7 +119,11 @@ const deleteEventRow = async (props, rows) =>  {
             label="Edit"
             class="q-mr-md"
           />
-          <q-btn push color="red" label="delete" @click="deleteEventRow(props.event)" />
+          <q-btn push 
+          color="red" 
+          label="delete" 
+          @click="deleteEvent(props)" />
+
           <!-- <q-btn push color="red" text-color="primary" label="add" /> -->
         </q-td>
       </template>
