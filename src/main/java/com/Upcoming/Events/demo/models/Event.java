@@ -1,4 +1,4 @@
-package com.upcoming.events.demo.models;
+package com.Upcoming.Events.demo.models;
 
 import java.sql.Date;
 import javax.persistence.Column;
@@ -8,8 +8,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+import java.util.Set;
+
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name = "eventos")
+@Table(name = "events")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,22 +44,45 @@ public class Event {
     public Event() {
     }
 
-    public long getId() {
-        return id;
-    }
+    // // public long getId() {
+    // //     return id;
+    // // }
 
-    public Event(long id, String title, Date date_hour, int max_participants, String description, String style,
-            int actual_participants) {
-        this.id = id;
+    // public Event(long id, String title, Date date_hour, int max_participants, String description, String style,
+    //         int actual_participants) {
+    //     this.id = id;
+    public Event(String title, Date date_hour, int max_participants, String description,
+            int actual_participants, Set<User> users) {
         this.title = title;
         this.date_hour = date_hour;
         this.max_participants = max_participants;
         this.description = description;
         this.style = style;
         this.actual_participants = actual_participants;
+        this.users = users;
     }
 
-    public Event(String string, Object object, int i, String string2, int j) {
+    public Event(String string, String string2, int i, String string3, int j, Object object) {
+    }
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "events", fetch = FetchType.EAGER)
+    Set<User> users;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     public String getTitle() {

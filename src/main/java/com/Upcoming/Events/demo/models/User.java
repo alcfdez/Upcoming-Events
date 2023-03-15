@@ -1,6 +1,7 @@
-package com.upcoming.events.demo.models;
+package com.Upcoming.Events.demo.models;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -13,21 +14,35 @@ public class User {
     private String username;
     private String password;
     
-    public User(String username, String password, List<Authority> authorities) {
+    public User(String username, String password, Set<Role> roles, List<Event> events) {
         this.username = username;
         this.password = password;
-        this.authorities = authorities;
+        this.roles = roles;
+        this.events = events;
     }
 
     public User() {
-        
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_authority",
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_event",
         joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn( name = "authority_id", referencedColumnName = "id"))
-    private List<Authority> authorities;
+        inverseJoinColumns = @JoinColumn( name = "event_id", referencedColumnName = "id"))
+    private List<Event> events;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles",
+        joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn( name = "role_id", referencedColumnName = "id"))
+    private Set<Role> roles;
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
 
     public Long getId() {
         return id;
@@ -53,12 +68,14 @@ public class User {
         this.password = password;
     }
 
-    public List<Authority> getAuthorities() {
-        return authorities;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setAuthorities(List<Authority> authorities) {
-        this.authorities = authorities;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
+
+   
     
 }

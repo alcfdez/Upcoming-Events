@@ -1,4 +1,4 @@
-package com.upcoming.events.demo.models;
+package com.Upcoming.Events.demo.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -14,14 +14,13 @@ const $q = useQuasar();
 const onSubmit = async () => {
   axios({
     method: "POST",
-    url: "http://localhost:8080/api/events",
+    url: "http://localhost:8080/api/events/add",
     data: {
       title: titleModel.value,
       date_hour: dateModel.value,
       max_participants: parseInt(capacityModel.value),
       description: descriptionModel.value,
       actual_participants: 200,
-      //Se cambió Image por style
       style: musicStyleModel.value
     },
   })
@@ -43,7 +42,7 @@ const onReset = () => {
   capacityModel.value = "",
   musicStyleModel.value = ""
 };
-//Opciones select de estilos de música
+
 const options = ['dance', 'pop', 'rock', 'latina', 'alternativa', 'hiphop', 'metal']
 
 </script>
@@ -69,8 +68,8 @@ const options = ['dance', 'pop', 'rock', 'latina', 'alternativa', 'hiphop', 'met
       />
   </div>
 
-      <q-form @submit="onSubmit" @reset="onReset" class="form q-gutter-xs self-end col-9 ">
-        <span class="title text-white text-h3 text-weight-bold">Register New Event</span>
+      <q-form @submit="onSubmit" @reset="onReset" class="form q-gutter-sm self-end">
+        <span class="text-white text-h3 text-weight-bold">Register New Event</span>
         <q-input
           v-model="titleModel"
           label="Enter event name"
@@ -160,7 +159,7 @@ const options = ['dance', 'pop', 'rock', 'latina', 'alternativa', 'hiphop', 'met
             (val) => (val && val.length > 1) || 'This field is required',
           ]"
         />
-        <!-- Este es el Select -->
+      
         <q-select 
         rounded standout 
         v-model="musicStyleModel" 
@@ -172,14 +171,6 @@ const options = ['dance', 'pop', 'rock', 'latina', 'alternativa', 'hiphop', 'met
         
          />
          
-
-        <q-btn
-            label="New Here?"
-            type="submit"
-            color="white"
-            class="q-py-md text-center button-new"
-            flat
-          />
 
         <div class="row justify-between">
           <q-btn

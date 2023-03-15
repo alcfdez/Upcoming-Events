@@ -1,21 +1,22 @@
-package com.upcoming.events.demo.security;
+package com.Upcoming.Events.demo.security;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.stream.Collectors;
-
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.upcoming.events.demo.models.User;
+import com.Upcoming.Events.demo.models.Role;
+import com.Upcoming.Events.demo.models.User;
 
 
 public class SecurityUser implements UserDetails {
 
+    private final User user;
+
     public SecurityUser(User user) {
         this.user = user;
     }
-
-    private final User user;
 
     @Override
     public String getPassword() {
@@ -29,7 +30,13 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-    return user.getAuthorities().stream().map(SecurityAuthority::new).collect(Collectors.toList());
+        Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+
+        for(Role role : user.getRoles()) {
+            SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleName());
+            authorities.add(authority);
+        }
+        return authorities;
     }
 
     @Override
