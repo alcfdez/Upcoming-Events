@@ -1,7 +1,6 @@
 package com.Upcoming.Events.demo.models;
 
 import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,46 +10,46 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "eventos")
-
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column 
+    @Column
     private long id;
 
-    @Column (name = "title")
+    @Column(name = "title")
     private String title;
 
-    @Column (name = "date_hour")
+    @Column(name = "date_hour")
     private Date date_hour;
 
-    @Column (name = "max_participants")
+    @Column(name = "max_participants")
     private int max_participants;
 
-    @Column (name = "description")
+    @Column(name = "description")
     private String description;
 
-    // @Column (name = "id_image")
-    // private String id_image;
+    @Column(name = "style")
+    private String style;
 
-    @Column (name = "actual_participants")
+    @Column(name = "actual_participants")
     private int actual_participants;
 
     public Event() {
     }
 
-    public Event(String title, Date date_hour, int max_participants, String description,
+    public long getId() {
+        return id;
+    }
+
+    public Event(long id, String title, Date date_hour, int max_participants, String description, String style,
             int actual_participants) {
+        this.id = id;
         this.title = title;
         this.date_hour = date_hour;
         this.max_participants = max_participants;
         this.description = description;
-        // this.id_image = id_image;
+        this.style = style;
         this.actual_participants = actual_participants;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getTitle() {
@@ -85,13 +84,13 @@ public class Event {
         this.description = description;
     }
 
-    // public String getId_image() {
-    //     return id_image;
-    // }
+    public String getStyle() {
+        return style;
+    }
 
-    // public void setId_image(String id_image) {
-    //     this.id_image = id_image;
-    // }
+    public void setStyle(String style) {
+        this.style = style;
+    }
 
     public int getActual_participants() {
         return actual_participants;
@@ -101,5 +100,4 @@ public class Event {
         this.actual_participants = actual_participants;
     }
 
-    
 }

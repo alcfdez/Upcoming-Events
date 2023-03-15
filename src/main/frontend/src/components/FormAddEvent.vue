@@ -7,6 +7,7 @@ let titleModel = ref();
 let descriptionModel = ref();
 let dateModel  = ref();
 let capacityModel = ref();
+let musicStyleModel = ref();
 
 const $q = useQuasar();
 
@@ -19,7 +20,9 @@ const onSubmit = async () => {
       date_hour: dateModel.value,
       max_participants: parseInt(capacityModel.value),
       description: descriptionModel.value,
-      actual_participants: 200
+      actual_participants: 200,
+      //Se cambió Image por style
+      style: musicStyleModel.value
     },
   })
     .then((res) =>
@@ -37,8 +40,12 @@ const onReset = () => {
   titleModel.value = "",
   descriptionModel.value = "",
   dateModel.value = "",
-  capacityModel.value = ""
+  capacityModel.value = "",
+  musicStyleModel.value = ""
 };
+//Opciones select de estilos de música
+const options = ['dance', 'pop', 'rock', 'latina', 'alternativa', 'hiphop', 'metal']
+
 </script>
 
 <template>
@@ -153,6 +160,18 @@ const onReset = () => {
             (val) => (val && val.length > 1) || 'This field is required',
           ]"
         />
+        <!-- Este es el Select -->
+        <q-select 
+        rounded standout 
+        v-model="musicStyleModel" 
+        :options="options" 
+        label="Select an event"
+        bg-color="red"
+        label-color="white"
+        :input-style="{ color: 'white', fontSize: '1.7em'}"
+        
+         />
+         
 
         <q-btn
             label="New Here?"
