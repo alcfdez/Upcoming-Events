@@ -21,17 +21,8 @@ const props = defineProps({
 });
 
 const roles = ref(props.userRoles[0]);
-// console.log(roles.value);
-// console.log(props.event);
+
 const columns = [
-   {
-    name: "id",
-    required: true,
-    label: "id",
-    field: "id",
-    align: "center",
-    sortable: true,
-  },
   {
     name: "title",
     required: true,
