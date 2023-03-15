@@ -1,4 +1,4 @@
-package com.upcoming.events.demo.services;
+package com.Upcoming.Events.demo.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,15 +9,15 @@ import org.springframework.data.domain.Pageable;
 
 import org.springframework.stereotype.Service;
 
-import com.upcoming.events.demo.models.Event;
-import com.upcoming.events.demo.repositories.EventRepository;
+import com.Upcoming.Events.demo.models.Event;
+import com.Upcoming.Events.demo.repositories.EventRepository;
 
 @Service
 public class EventServiceImpl implements BaseService<Event>{
 
     @Autowired
     private EventRepository eventRepository;
-    
+
     public EventServiceImpl(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
     }
@@ -54,6 +54,5 @@ public class EventServiceImpl implements BaseService<Event>{
     @Transactional
     public void deleteById(Long id) {
        eventRepository.deleteById(id);
-    }
-    
+    }    
 }

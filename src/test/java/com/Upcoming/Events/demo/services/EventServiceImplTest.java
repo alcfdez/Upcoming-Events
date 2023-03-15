@@ -1,4 +1,4 @@
-package com.upcoming.events.demo.services;
+package com.Upcoming.Events.demo.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -15,9 +15,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import com.upcoming.events.demo.models.Event;
-import com.upcoming.events.demo.repositories.EventRepository;
-import com.upcoming.events.demo.services.EventServiceImpl;
+import com.Upcoming.Events.demo.models.Event;
+import com.Upcoming.Events.demo.repositories.EventRepository;
+import com.Upcoming.Events.demo.services.EventServiceImpl;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
@@ -35,9 +35,9 @@ public class EventServiceImplTest {
     @BeforeEach
     public void setUp() {
         eventList = new ArrayList<>();
-        eventList.add(new Event("Evento 1",null, 10, "Evento de prueba 1", 1));
-        eventList.add(new Event("Evento 2", null, 20, "Evento de prueba 2", 2));
-        eventList.add(new Event("Evento 3", null, 30, "Evento de prueba 3", 3));
+        eventList.add(new Event("Evento 1", "2023-03-15", 10, "Evento de prueba 1", 1,null));
+        eventList.add(new Event("Evento 2", "2023-03-20", 20, "Evento de prueba 2", 2,null));
+        eventList.add(new Event("Evento 3", "2023-03-25", 30, "Evento de prueba 3", 3, null));
     }
 
     @Test
@@ -69,7 +69,7 @@ public class EventServiceImplTest {
 
     @Test
     public void testSave() {
-        Event event = new Event("Evento 4", null, 40, "Evento de prueba 4", 4);
+        Event event = new Event("Evento 4", "2023-04-01", 40, "Evento de prueba 4", 4,null);
 
         when(eventRepository.save(any(Event.class))).thenReturn(event);
 

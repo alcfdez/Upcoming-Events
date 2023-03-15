@@ -1,16 +1,18 @@
-package com.upcoming.events.demo.controllers;
+package com.Upcoming.Events.demo.controllers;
 
 import java.util.List;
 import java.util.Optional;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.upcoming.events.demo.models.Event;
-import com.upcoming.events.demo.services.EventServiceImpl;
+import com.Upcoming.Events.demo.models.Event;
+import com.Upcoming.Events.demo.services.EventServiceImpl;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/events")
 public class EventController {
@@ -24,7 +26,8 @@ public class EventController {
     private EventServiceImpl eventService;
     
 //Crear nuevo usuario
-@PostMapping(value ="", consumes = "application/*") 
+@Transactional
+@PostMapping(value ="add", consumes = "application/*") 
     public ResponseEntity<?> create(@RequestBody Event event) {
 
         System.out.println("----------------------------");
@@ -34,13 +37,15 @@ public class EventController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(eventService.save(event));
 }
+
 //Leer un usuario
+@Transactional
 @GetMapping
 public List<Event> getAll() {
     return eventService.findAll();
 }
 
-
+@Transactional
 @GetMapping("/{id}") 
 public ResponseEntity<?> read(@PathVariable Long id){
     Optional<Event> oEvent = eventService.findById(id);
@@ -52,6 +57,7 @@ public ResponseEntity<?> read(@PathVariable Long id){
 }
 
 //Actualizar usuario
+@Transactional
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Event eventDetails, @PathVariable Long id)  {
         Optional<Event> event = eventService.findById(id);
@@ -71,6 +77,7 @@ public ResponseEntity<?> read(@PathVariable Long id){
 }
 
 //Eliminar usuario
+@Transactional
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete (@PathVariable Long id){
         if(!eventService.findById(id).isPresent()) {
