@@ -5,6 +5,7 @@ export default class AuthLogout{
     #auth = "";
 
    async logout(){
+     localStorage.removeItem("auth");
     axios.get(`${this.#baseUrl}/api/logout`)
     window.location.reload()
   .then(res => {

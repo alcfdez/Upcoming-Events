@@ -25,8 +25,8 @@ export default class AuthService {
   }
 
   async logout() {
-    console.log("deslog")
     await this.#logout.logout();
+    // console.log("deslog")
   }
 
 }
