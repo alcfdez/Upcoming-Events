@@ -16,10 +16,7 @@ onBeforeMount(async () => {
   await service.fetchAll();
   console.log(events.value)
 })
-
-
 </script>
-
 
 <template>
   <q-page class="bg-blue column items-center">

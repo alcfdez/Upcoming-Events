@@ -1,4 +1,4 @@
-package com.Upcoming.events.demo.services;
+package com.Upcoming.Events.demo.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -17,7 +17,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import com.Upcoming.Events.demo.models.Event;
 import com.Upcoming.Events.demo.repositories.EventRepository;
-import com.Upcoming.Events.demo.services.EventServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 public class EventServiceImplTest {

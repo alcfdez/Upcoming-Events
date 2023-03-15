@@ -13,7 +13,7 @@ const $q = useQuasar();
 const onSubmit = async () => {
   axios({
     method: "POST",
-    url: "http://localhost:8080/api/events",
+    url: "http://localhost:8080/api/events/add",
     data: {
       title: titleModel.value,
       date_hour: dateModel.value,

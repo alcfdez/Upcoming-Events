@@ -4,9 +4,11 @@ const selected = ref([]);
 
 const props = defineProps({
   event: Object,
-  userRoles: Array
+  userRoles: Array,
 });
 
+const roles = ref(props.userRoles[0]);
+console.log(roles.value);
 const columns = [
   {
     name: "title",
@@ -70,11 +72,31 @@ function getSelectedString(rows) {
             push
             color="white"
             text-color="primary"
+            label="LOGIN"
+            v-if="roles === undefined"
+            to="/login"
+          />
+          <q-btn
+            push
+            color="white"
+            text-color="primary"
             label="Edit"
             class="q-mr-md"
+            v-if="roles === 'ROLE_ADMIN'"
           />
-          <q-btn push color="red" label="delete" />
-          <!-- <q-btn push color="red" text-color="primary" label="add" /> -->
+          <q-btn
+            push
+            color="red"
+            label="delete"
+            v-if="roles === 'ROLE_ADMIN'"
+          />
+          <q-btn
+            push
+            color="white"
+            text-color="primary"
+            v-if="roles === 'ROLE_USER'"
+            label="add"
+          />
         </q-td>
       </template>
 
