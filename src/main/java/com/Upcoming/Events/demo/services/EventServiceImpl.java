@@ -6,11 +6,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
 import org.springframework.stereotype.Service;
-
 import com.Upcoming.Events.demo.models.Event;
 import com.Upcoming.Events.demo.repositories.EventRepository;
+
 
 @Service
 public class EventServiceImpl implements BaseService<Event>{
@@ -54,5 +53,7 @@ public class EventServiceImpl implements BaseService<Event>{
     @Transactional
     public void deleteById(Long id) {
        eventRepository.deleteById(id);
+
+    }
+
     }    
-}

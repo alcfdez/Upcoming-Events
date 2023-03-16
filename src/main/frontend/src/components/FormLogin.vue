@@ -8,7 +8,6 @@ import { useAuthStore }  from "src/stores/authStore"
 
 const auth = useAuthStore();
 
-
 let usernameModel = ref();
 let passwordModel = ref();
 const router = useRouter();
@@ -29,6 +28,7 @@ const submitData = async () => {
   auth.setRole(role);
   auth.setUsername(usernameModel.value);
   auth.setIsAuthenticated();
+  router.push("/")
   console.log(auth.isAuthenticate, auth.roles, auth.username);
   } catch (error) {
     console.error(error);
