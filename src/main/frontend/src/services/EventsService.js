@@ -33,6 +33,11 @@ class EventsService {
       console.log(err);
     }
   }
+
+  async addEvent(){
+    alert("evento añadido")
+  }
+
 }
 
 export default EventsService;

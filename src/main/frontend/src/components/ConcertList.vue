@@ -9,6 +9,7 @@ console.log(auth.roles[0]);
 
 const service = new EventsService();
 const events = reactive(service.getEvents());
+// const addEvent = service.addEvent();
 
 onBeforeMount(async () => {
   await service.fetchAll();
@@ -18,6 +19,8 @@ const props = defineProps({
   event: Object,
   userRoles: Array,
 });
+
+
 
 const roles = ref(props.userRoles[0]);
 
@@ -114,6 +117,7 @@ const deleteEvent = async (props, rows) => {
               color="white"
               text-color="primary"
               v-if="roles === 'ROLE_USER'"
+              @click="service.addEvent"
               label="add"
             />
           </q-td>

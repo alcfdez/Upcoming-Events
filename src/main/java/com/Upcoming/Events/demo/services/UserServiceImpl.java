@@ -5,6 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -72,12 +74,14 @@ public class UserServiceImpl implements BaseService<User>{
     }
 
     @Transactional
-
-    public void registerUserToEvent(Long eventId, Long userId) {
+    public void registerUserToEvent(Long eventId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        User user = userRepository.findByUsername(currentUserName)
+                .orElseThrow(() -> new RuntimeException("User not found with username " + currentUserName));
+    
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new RuntimeException("Event not found with id " + eventId));
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found with id " + userId));
     
         if (event.getUsers().contains(user)) {
             throw new RuntimeException("User is already registered for the event");
@@ -86,11 +90,12 @@ public class UserServiceImpl implements BaseService<User>{
         if (event.getMax_participants() <= event.getActual_participants()) {
             throw new RuntimeException("Event is full");
         }
-        
+    
         event.setActual_participants(event.getActual_participants() + 1);
         user.getEvents().add(event);
         userRepository.save(user);
     }
+    
 
     @Override
     @Transactional
