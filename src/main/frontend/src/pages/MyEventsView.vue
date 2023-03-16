@@ -1,18 +1,131 @@
 <script setup>
-import SliderComponent from 'src/components/SliderComponent.vue';
 
+import HeadPage from  '../components/HeadPage.vue' 
 
+import { ref } from 'vue'
+
+const columns = [
+  {
+    name: 'desc',
+    required: true,
+    label: 'Dessert (100g serving)',
+    align: 'left',
+    field: row => row.name,
+    sortable: true
+  },
+  { name: 'calories', align: 'center', label: 'Calories', field: 'calories', sortable: true },
+  { name: 'fat', label: 'Fat (g)', field: 'fat', sortable: true },
+  { name: 'carbs', label: 'Carbs (g)', field: 'carbs' }
+]
+// const columns = [
+// {
+//     name: "title",
+//     required: true,
+//     label: "Title",
+//     field: "title",
+//     align: "center",
+//     sortable: true,
+//   },
+//   { name: "MusicStyle", align: "left", label: "Music Style", field: "style" },
+
+//   {
+//     name: "Description",
+//     align: "center",
+//     label: "Description",
+//     field: "description",
+//     sortable: true,
+//   },
+//   {
+//     name: "date_hour",
+//     align: "center",
+//     label: "Date",
+//     field: "date_hour",
+//     sortable: true,
+//   },
+//   {
+//     name: "max_participants",
+//     align: "center",
+//     label: "Capacity",
+//     field: "max_participants",
+//     sortable: true,
+//   },
+//   { name: "Actions", align: "left", label: "Actions", field: "Actions" },
+// ]
+const rows = [
+  {
+    name: 'Frozen Yogurt',
+    calories: 159,
+    fat: 6.0,
+    carbs: 24
+  },
+  {
+    name: 'Ice cream sandwich',
+    calories: 237,
+    fat: 9.0,
+    carbs: 37
+  },
+  {
+    name: 'Eclair',
+    calories: 262,
+    fat: 16.0,
+    carbs: 23
+  },
+  {
+    name: 'Cupcake',
+    calories: 305,
+    fat: 3.7,
+    carbs: 67
+  },
+  {
+    name: 'Gingerbread',
+    calories: 356,
+    fat: 16.0,
+    carbs: 49
+  },
+  {
+    name: 'Jelly bean',
+    calories: 375,
+    fat: 0.0,
+    carbs: 94
+  },
+  {
+    name: 'Lollipop',
+    calories: 392,
+    fat: 0.2,
+    carbs: 98
+  },
+  {
+    name: 'Honeycomb',
+    calories: 408,
+    fat: 3.2,
+    carbs: 87
+  },
+  {
+    name: 'Donut',
+    calories: 452,
+    fat: 25.0,
+    carbs: 51
+  },
+  {
+    name: 'KitKat',
+    calories: 518,
+    fat: 26.0,
+    carbs: 65
+  }
+]
 </script>
 
 <template>
-<HeadPage/>
-<SliderComponent/>
-<h1>My Events</h1>
+    <q-page class="bg-blue column items-center">
 
-<div class="q-pa-md">
+<HeadPage/>
+
+<h1>My Events</h1>
+  <div class="q-pa-md">
+    <div class="q-pa-md">
     <q-table
       grid
-      card-class="bg-primary text-white"
+      grid-header
       title="Treats"
       :rows="rows"
       :columns="columns"
@@ -29,4 +142,9 @@ import SliderComponent from 'src/components/SliderComponent.vue';
       </template>
     </q-table>
   </div>
+  </div>
+  <q-footer class="footer bg-blue flex flex-center" reveal>
+    <img class="logo" src="../assets/images/logo.png" />
+</q-footer>
+  </q-page>
 </template>
