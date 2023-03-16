@@ -11,12 +11,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 @Controller
 public class StaticResourceController {
+
     @GetMapping(value = "/static/{filename:.+}", produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<Resource> serveImage(@PathVariable String filename) throws IOException {
         Path path = Paths.get("src/main/resources/static/" + filename);
         Resource resource = new ClassPathResource(path.toString());
+
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
     }
 }

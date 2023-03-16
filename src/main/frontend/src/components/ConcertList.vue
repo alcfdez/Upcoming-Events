@@ -4,16 +4,22 @@ import axios from "axios";
 import EventsService from "../services/EventsService.js";
 import { useAuthStore } from "src/stores/authStore";
 import { event } from "quasar";
+import { Notify, useQuasar } from "quasar";
+
 
 const auth = useAuthStore();
 console.log(auth.roles[0]);
+const $q = useQuasar();
 
 const service = new EventsService();
 const events = reactive(service.getEvents());
 
+
+
 onBeforeMount(async () => {
   await service.fetchAll();
   console.log(events.value);
+  console.log(users.value);
 });
 const props = defineProps({
   event: Object,
@@ -74,6 +80,31 @@ const deleteEvent = async (props, rows) => {
     console.log(err);
   }
 };
+
+const addEvent = async(props) =>{
+    axios({
+    method: "POST",
+    url: "http://localhost:8080/api/users/subscribe/" + props.id,
+  })
+  .then((res) =>
+      Notify.create({
+        type: "positive",
+        message: "Signed up for the event successfully!",
+        icon: "fa-solid fa-circle-check",
+        position: "top",
+      })
+    )
+    .catch(
+     Notify.create({
+      color: "negative",
+      message: "This username already exists",
+      position: "top",
+    })
+    )
+  };
+
+
+
 </script>
 
 <template>
@@ -122,6 +153,7 @@ const deleteEvent = async (props, rows) => {
               color="white"
               text-color="primary"
               v-if="roles === 'ROLE_USER'"
+              @click="addEvent(row)"
               label="add"
             />
           </q-td>

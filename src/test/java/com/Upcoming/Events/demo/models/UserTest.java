@@ -16,11 +16,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.Upcoming.Events.demo.repositories.AuthorityRepository;
 import com.Upcoming.Events.demo.repositories.UserRepository;
-
+import com.Upcoming.Events.demo.models.Role;
+import com.Upcoming.Events.demo.models.User;
 
 
 import com.Upcoming.Events.demo.models.User;
-// import com.Upcoming.Events.demo.models.User;
 
 import javax.persistence.EntityManager;
 
@@ -58,5 +58,10 @@ public class UserTest {
         assertEquals(1, userDB.getRoles().size());
         assertThat("User role name", userDB.getRoles().contains(role));
     }
+    @Test
+    void testName() {
+        
+    }
+
 
 }

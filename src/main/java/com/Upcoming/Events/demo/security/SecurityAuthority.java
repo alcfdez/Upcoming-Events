@@ -6,6 +6,7 @@ import com.Upcoming.Events.demo.models.Role;
 
 
 
+
 public class SecurityAuthority implements GrantedAuthority{
     
     private final Role authority;

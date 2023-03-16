@@ -52,13 +52,13 @@ public class Event {
     //         int actual_participants) {
     //     this.id = id;
     public Event(String title, Date date_hour, int max_participants, String description,
-            int actual_participants, Set<User> users) {
+            int actual_participants, Set<User> users, String style) {
         this.title = title;
         this.date_hour = date_hour;
         this.max_participants = max_participants;
         this.description = description;
-        this.style = style;
         this.actual_participants = actual_participants;
+        this.style = style;
         this.users = users;
     }
 

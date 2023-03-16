@@ -10,6 +10,7 @@ import com.Upcoming.Events.demo.models.Role;
 import com.Upcoming.Events.demo.models.User;
 
 
+
 public class SecurityUser implements UserDetails {
 
     private final User user;

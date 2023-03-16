@@ -17,24 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Upcoming.Events.demo.models.User;
 import com.Upcoming.Events.demo.services.UserServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
-import com.Upcoming.Events.demo.models.User;
-import com.Upcoming.Events.demo.services.UserServiceImpl;
 
 @RestController
 @RequestMapping("/api/users")
+
 public class UserController {
 
   @Autowired
   private UserServiceImpl userService;
-
 
   @Transactional
   @PostMapping(value = "", consumes = "application/*")
   public ResponseEntity<?> create(@RequestBody User user) {
     return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
   }
-
 
   @Transactional
   @GetMapping("/{id}")
@@ -68,11 +64,11 @@ public class UserController {
   }
 
   @Transactional
-  @PostMapping("{userId}/subscribe/{eventId}")
-  public ResponseEntity<String> addParticipantToEvent(@PathVariable Long eventId, @PathVariable Long userId) {
+  @PostMapping("/subscribe/{eventId}")
+  public ResponseEntity<String> addParticipantToEvent(@PathVariable Long eventId) {
     try {
-      userService.registerUserToEvent(eventId, userId);
-      return ResponseEntity.ok().body("User with id " + userId + " added to event with id " + eventId);
+      userService.registerUserToEvent(eventId);
+      return ResponseEntity.ok().body("User with id " + " added to event with id " + eventId);
     } catch (RuntimeException e) {
       return ResponseEntity.badRequest().body(e.getMessage());
     }

@@ -10,8 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import com.Upcoming.Events.demo.models.Event;
 import com.Upcoming.Events.demo.services.EventServiceImpl;
+
 
 @RestController
 @RequestMapping("/api/events")
