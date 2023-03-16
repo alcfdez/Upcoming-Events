@@ -106,24 +106,7 @@ const options = ['dance', 'pop', 'rock', 'latina', 'alternativa', 'hiphop', 'met
             (val) => (val && val.length > 3) || 'This field is required',
           ]"
         />
-        <!-- <q-input
-          v-model="dateModel"
-          label="Date/Time"
-          label-color="white"
-          outlined
-          rounded
-          text-color="white"
-          color="white"
-          type="text"
-          :input-style="{ color: 'white', fontSize: '1.7em'}"
-          lazy-rules="ondemand"
-          bg-color="red"
-          class="q-mt-lg"
-          :rules="[
-            (val) => (val && val.length > 3) || 'This field is required',
-          ]"
-        /> -->
-
+       
         <q-input
           v-model="dateModel"
           label=""

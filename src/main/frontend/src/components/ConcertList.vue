@@ -3,6 +3,7 @@ import { ref, defineProps, reactive, onBeforeMount } from "vue";
 import axios from "axios";
 import EventsService from "../services/EventsService.js";
 import { useAuthStore } from "src/stores/authStore";
+import { event } from "quasar";
 
 const auth = useAuthStore();
 console.log(auth.roles[0]);
@@ -21,6 +22,14 @@ const props = defineProps({
 
 const roles = ref(props.userRoles[0]);
 
+let rock = "http://localhost:8080/rock.png";
+let dance = "http://localhost:8080/dance.png";
+let latina = "http://localhost:8080/latina.png";
+let metal = "http://localhost:8080/metal.png";
+let hiphop = "http://localhost:8080/hiphop.png";
+let alternativa = "http://localhost:8080/alternativa.png";
+let pop = "http://localhost:8080/pop.png";
+
 const columns = [
   {
     name: "title",
@@ -31,7 +40,6 @@ const columns = [
     sortable: true,
   },
   { name: "MusicStyle", align: "left", label: "Music Style", field: "style" },
-
   {
     name: "Description",
     align: "center",
@@ -78,9 +86,9 @@ const deleteEvent = async (props, rows) => {
         row-key="name"
         :grid="$q.screen.lt.md"
       >
-        <template #body-cell-#body-cell-style>
+        <template #body-cell-MusicStyle>
           <q-td align="center">
-            <q-img src="http://localhost:8080/rock.png"></q-img>
+            <img :src="url" />
           </q-td>
         </template>
 
@@ -154,7 +162,7 @@ const deleteEvent = async (props, rows) => {
           font-size: 0.6em;
         }
         &:nth-child(2) {
-          background-color: #9e0404;
+          // background-color: #9e0404;
           color: white;
           max-width: 10em;
           white-space: pre-wrap;
@@ -188,8 +196,7 @@ const deleteEvent = async (props, rows) => {
   }
 }
 
-.q-img {
-  height: 15vh;
-  width: 15vw;
+img {
+  width: 12vw;
 }
 </style>

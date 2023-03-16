@@ -40,7 +40,7 @@ public class WebSecurityConfig {
                         .logoutUrl("/api/logout")
                         .deleteCookies("JSESSIONID"))   
       .authorizeRequests((auth) -> auth
-                        .antMatchers("/api/register", "/api/login", "/api/events").permitAll()
+                        .antMatchers("/api/register", "/api/login", "/api/events", "/*").permitAll()
                         .antMatchers("/api/logout").hasAnyRole("USER","ADMIN")
                         .antMatchers("/api/events/add").hasRole("ADMIN")
                         .anyRequest().authenticated())
