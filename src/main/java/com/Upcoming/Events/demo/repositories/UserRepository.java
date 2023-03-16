@@ -1,0 +1,12 @@
+
+package com.Upcoming.Events.demo.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.Upcoming.Events.demo.models.User;
+
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByUsername(String username);
+}
