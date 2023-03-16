@@ -25,13 +25,19 @@ const onSubmit = async () => {
     },
   })
     .then((res) =>
-      $q.notify({
+      Notify.create({
         type: "positive",
         message: "Event added successfully!",
         icon: "fa-solid fa-circle-check",
       })
     )
-    .catch((err) => console.log(err));
+    .catch(
+      Notify.create({
+      color: "negative",
+      message: "This username already exists",
+      position: "top",
+    });
+    );
   onReset();
 };
 
@@ -142,18 +148,18 @@ const options = ['dance', 'pop', 'rock', 'latina', 'alternativa', 'hiphop', 'met
             (val) => (val && val.length > 1) || 'This field is required',
           ]"
         />
-      
-        <q-select 
-        rounded standout 
-        v-model="musicStyleModel" 
-        :options="options" 
+
+        <q-select
+        rounded standout
+        v-model="musicStyleModel"
+        :options="options"
         label="Select an event"
         bg-color="red"
         label-color="white"
         :input-style="{ color: 'white', fontSize: '1.7em'}"
-        
+
          />
-         
+
 
         <div class="row justify-between">
           <q-btn
@@ -214,7 +220,7 @@ const options = ['dance', 'pop', 'rock', 'latina', 'alternativa', 'hiphop', 'met
 .container-icons{
   margin: 0 auto;
   width: 84%;
-  
+
 }
 
 .q-breadcrumbs__el {

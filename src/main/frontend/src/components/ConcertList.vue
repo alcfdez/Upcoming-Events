@@ -3,24 +3,27 @@ import { ref, defineProps, reactive, onBeforeMount } from "vue";
 import axios from "axios";
 import EventsService from "../services/EventsService.js";
 import { useAuthStore } from "src/stores/authStore";
+import { Notify, useQuasar } from "quasar";
+
 
 const auth = useAuthStore();
 console.log(auth.roles[0]);
+const $q = useQuasar();
 
 const service = new EventsService();
 const events = reactive(service.getEvents());
-// const addEvent = service.addEvent();
+
+
 
 onBeforeMount(async () => {
   await service.fetchAll();
   console.log(events.value);
+  console.log(users.value);
 });
 const props = defineProps({
   event: Object,
   userRoles: Array,
 });
-
-
 
 const roles = ref(props.userRoles[0]);
 
@@ -69,6 +72,31 @@ const deleteEvent = async (props, rows) => {
     console.log(err);
   }
 };
+
+const addEvent = async(props) =>{
+    axios({
+    method: "POST",
+    url: "http://localhost:8080/api/users/subscribe/" + props.id,
+  })
+  .then((res) =>
+      Notify.create({
+        type: "positive",
+        message: "Signed up for the event successfully!",
+        icon: "fa-solid fa-circle-check",
+        position: "top",
+      })
+    )
+    .catch(
+     Notify.create({
+      color: "negative",
+      message: "This username already exists",
+      position: "top",
+    })
+    )
+  };
+
+
+
 </script>
 
 <template>
@@ -117,7 +145,7 @@ const deleteEvent = async (props, rows) => {
               color="white"
               text-color="primary"
               v-if="roles === 'ROLE_USER'"
-              @click="service.addEvent"
+              @click="addEvent(row)"
               label="add"
             />
           </q-td>

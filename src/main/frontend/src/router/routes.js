@@ -14,7 +14,7 @@ const router = createRouter({
         { path: 'login',name:'login', component: () => import('pages/auth/LoginView.vue'),  },
         { path: 'addEvent',name:'addEvent', component: () => import('pages/FormAddPage.vue'), meta: { requiresAuth : true } },
         { path: 'register',name:'register', component: () => import('pages/auth/RegisterView.vue') },
-        { path: 'favorites',name:'favorites', component: () => import('pages/FavoritesPage.vue'), meta: { requiresAuth : true } },
+        { path: 'myEvents',name:'myEvents', component: () => import('pages/MyEventsView.vue') },
         { path: 'dashboard',name:'dashboard', component: () => import('pages/Dashboard.vue'), meta: { requiresAuth : true } },
         { path: 'api/logout',name:'logout', component: () => import('pages/IndexPage.vue'), meta: { requiresAuth : true } }
       ]
