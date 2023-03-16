@@ -1,16 +1,20 @@
-package com.upcoming.events.demo.controllers;
+package com.Upcoming.Events.demo.controllers;
 
 import java.util.List;
 import java.util.Optional;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.upcoming.events.demo.models.Event;
-import com.upcoming.events.demo.services.EventServiceImpl;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+import com.Upcoming.Events.demo.models.Event;
+import com.Upcoming.Events.demo.services.EventServiceImpl;
+
+
 @RestController
 @RequestMapping("/api/events")
 public class EventController {
@@ -24,17 +28,26 @@ public class EventController {
     private EventServiceImpl eventService;
     
 //Crear nuevo usuario
-@PostMapping(value ="", consumes = "application/*") 
+@Transactional
+@PostMapping(value ="add", consumes = "application/*") 
     public ResponseEntity<?> create(@RequestBody Event event) {
+
+        System.out.println("----------------------------");
+        System.out.println(event.getTitle());
+        System.out.println(event.getStyle());
+        System.out.println("----------------------------");
+
         return ResponseEntity.status(HttpStatus.CREATED).body(eventService.save(event));
 }
+
 //Leer un usuario
+@Transactional
 @GetMapping
 public List<Event> getAll() {
     return eventService.findAll();
 }
 
-
+@Transactional
 @GetMapping("/{id}") 
 public ResponseEntity<?> read(@PathVariable Long id){
     Optional<Event> oEvent = eventService.findById(id);
@@ -46,6 +59,7 @@ public ResponseEntity<?> read(@PathVariable Long id){
 }
 
 //Actualizar usuario
+@Transactional
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Event eventDetails, @PathVariable Long id)  {
         Optional<Event> event = eventService.findById(id);
@@ -57,7 +71,7 @@ public ResponseEntity<?> read(@PathVariable Long id){
     event.get().setDate_hour(eventDetails.getDate_hour());
     event.get().setMax_participants(eventDetails.getMax_participants());
     event.get().setDescription(eventDetails.getDescription());
-    // event.get().setId_image(eventDetails.getId_image());
+    event.get().setStyle(eventDetails.getStyle());
     event.get().setActual_participants(eventDetails.getActual_participants());
 
     return ResponseEntity.status(HttpStatus.CREATED).body(eventService.save(event.get()));
@@ -65,6 +79,7 @@ public ResponseEntity<?> read(@PathVariable Long id){
 }
 
 //Eliminar usuario
+@Transactional
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete (@PathVariable Long id){
         if(!eventService.findById(id).isPresent()) {

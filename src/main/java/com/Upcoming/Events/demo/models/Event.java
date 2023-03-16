@@ -1,5 +1,6 @@
-package com.upcoming.events.demo.models;
+package com.Upcoming.Events.demo.models;
 
+import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,48 +8,81 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "eventos")
 
+import java.util.Set;
+
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name = "events")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column 
+    @Column
     private long id;
 
-    @Column (name = "title")
+    @Column(name = "title")
     private String title;
 
-    @Column (name = "date_hour")
-    private String date_hour;
+    @Column(name = "date_hour")
+    private Date date_hour;
 
-    @Column (name = "max_participants")
+    @Column(name = "max_participants")
     private int max_participants;
 
-    @Column (name = "description")
+    @Column(name = "description")
     private String description;
 
-    // @Column (name = "id_image")
-    // private String id_image;
+    @Column(name = "style")
+    private String style;
 
-    @Column (name = "actual_participants")
+    @Column(name = "actual_participants")
     private int actual_participants;
 
     public Event() {
     }
 
-    public Event(String title, String date_hour, int max_participants, String description,
-            int actual_participants) {
+    // // public long getId() {
+    // //     return id;
+    // // }
+
+    // public Event(long id, String title, Date date_hour, int max_participants, String description, String style,
+    //         int actual_participants) {
+    //     this.id = id;
+    public Event(String title, Date date_hour, int max_participants, String description,
+            int actual_participants, Set<User> users) {
         this.title = title;
         this.date_hour = date_hour;
         this.max_participants = max_participants;
         this.description = description;
-        // this.id_image = id_image;
+        this.style = style;
         this.actual_participants = actual_participants;
+        this.users = users;
     }
+
+    public Event(String string, String string2, int i, String string3, int j, Object object) {
+    }
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "events", fetch = FetchType.EAGER)
+    Set<User> users;
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     public String getTitle() {
@@ -59,11 +93,11 @@ public class Event {
         this.title = title;
     }
 
-    public String getDate_hour() {
+    public Date getDate_hour() {
         return date_hour;
     }
 
-    public void setDate_hour(String date_hour) {
+    public void setDate_hour(Date date_hour) {
         this.date_hour = date_hour;
     }
 
@@ -83,13 +117,13 @@ public class Event {
         this.description = description;
     }
 
-    // public String getId_image() {
-    //     return id_image;
-    // }
+    public String getStyle() {
+        return style;
+    }
 
-    // public void setId_image(String id_image) {
-    //     this.id_image = id_image;
-    // }
+    public void setStyle(String style) {
+        this.style = style;
+    }
 
     public int getActual_participants() {
         return actual_participants;
@@ -99,5 +133,4 @@ public class Event {
         this.actual_participants = actual_participants;
     }
 
-    
 }
