@@ -51,7 +51,7 @@ public class Event {
     // public Event(long id, String title, Date date_hour, int max_participants, String description, String style,
     //         int actual_participants) {
     //     this.id = id;
-    public Event(String title, Date date_hour, int max_participants, String description,
+    public Event(String title, Date date_hour, int max_participants, String description, String style,
             int actual_participants, Set<User> users) {
         this.title = title;
         this.date_hour = date_hour;
