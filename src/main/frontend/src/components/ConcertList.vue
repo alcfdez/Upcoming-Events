@@ -5,7 +5,6 @@ import EventsService from "../services/EventsService.js";
 import { useAuthStore } from "src/stores/authStore";
 import { Notify, useQuasar } from "quasar";
 
-
 const auth = useAuthStore();
 console.log(auth.roles[0]);
 const $q = useQuasar();
@@ -13,13 +12,11 @@ const $q = useQuasar();
 const service = new EventsService();
 const events = reactive(service.getEvents());
 
-
-
 onBeforeMount(async () => {
   await service.fetchAll();
   console.log(events.value);
-  console.log(users.value);
 });
+
 const props = defineProps({
   event: Object,
   userRoles: Array,
@@ -36,6 +33,7 @@ const columns = [
     align: "center",
     sortable: true,
   },
+
   { name: "MusicStyle", align: "left", label: "Music Style", field: "style" },
 
   {
@@ -73,12 +71,12 @@ const deleteEvent = async (props, rows) => {
   }
 };
 
-const addEvent = async(props) =>{
-    axios({
+const addEvent = async (props) => {
+  axios({
     method: "POST",
     url: "http://localhost:8080/api/users/subscribe/" + props.id,
   })
-  .then((res) =>
+    .then((res) =>
       Notify.create({
         type: "positive",
         message: "Signed up for the event successfully!",
@@ -87,16 +85,15 @@ const addEvent = async(props) =>{
       })
     )
     .catch(
-     Notify.create({
-      color: "negative",
-      message: "This username already exists",
-      position: "top",
-    })
-    )
-  };
+      q.create({
+        color: "negative",
+        message: "This username already exists",
+        position: "top",
+      })
+    );
+};
 
-
-
+const url = "http://localhost:8080/";
 </script>
 
 <template>
@@ -109,9 +106,12 @@ const addEvent = async(props) =>{
         row-key="name"
         :grid="$q.screen.lt.md"
       >
-        <template #body-cell-#body-cell-style>
+        <template #body-cell-MusicStyle="{ row }">
           <q-td align="center">
-            <q-img src="http://localhost:8080/rock.png"></q-img>
+            <img
+              :src="'http://localhost:8080/' + row.style"
+              onerror="this.src='https://marketing4ecommerce.net/wp-content/uploads/2018/08/Depositphotos_8480205_m-2015-compressor.jpg'"
+            />
           </q-td>
         </template>
 
@@ -185,7 +185,7 @@ const addEvent = async(props) =>{
         @include m.mv(800px) {
           font-size: 0.6em;
         }
-        &:nth-child(2) {
+        &:nth-child(1) {
           background-color: #9e0404;
           color: white;
           max-width: 10em;
@@ -220,8 +220,8 @@ const addEvent = async(props) =>{
   }
 }
 
-.q-img {
-  height: 15vh;
-  width: 15vw;
+img {
+  height: 3em;
+  width: 8em;
 }
 </style>

@@ -12,7 +12,7 @@ const router = createRouter({
       children: [
         { path: '',  name: 'index', component: () => import('pages/IndexPage.vue') },
         { path: 'login',name:'login', component: () => import('pages/auth/LoginView.vue'),  },
-        { path: 'addEvent',name:'addEvent', component: () => import('pages/FormAddPage.vue'), meta: { requiresAuth : true } },
+        { path: 'addEvent',name:'addEvent', component: () => import('pages/FormAddPage.vue') },
         { path: 'register',name:'register', component: () => import('pages/auth/RegisterView.vue') },
         { path: 'myEvents',name:'myEvents', component: () => import('pages/MyEventsView.vue') },
         { path: 'dashboard',name:'dashboard', component: () => import('pages/Dashboard.vue'), meta: { requiresAuth : true } },

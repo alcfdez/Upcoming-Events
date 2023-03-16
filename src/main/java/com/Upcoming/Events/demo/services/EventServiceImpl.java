@@ -36,11 +36,28 @@ public class EventServiceImpl implements BaseService<Event>{
     @Override
     @Transactional
     public Event save(Event event) {
-//Prueba para setear los estilos de música(16/03/2023):
-      if (event.getStyle() == "rock")  {
-        event.setStyle("/rock.png");
-      }
-        return eventRepository.save(event);
+        if (event.getStyle().equals("dance"))  {
+            event.setStyle("dance.png");
+          }
+          if (event.getStyle().equals("pop"))  {
+            event.setStyle("pop.png");
+          }
+          if (event.getStyle().equals("rock"))  {
+            event.setStyle("rock.png");
+          }
+          if (event.getStyle().equals("latina"))  {
+            event.setStyle("latina.png");
+          }
+          if (event.getStyle().equals("alternativa"))  {
+            event.setStyle("alternativa.png");
+          }
+          if (event.getStyle().equals("hiphop"))  {
+            event.setStyle("hiphop.png");
+          }
+          if (event.getStyle().equals("metal"))  {
+            event.setStyle("metal.png");
+          }
+            return eventRepository.save(event);
     }
 
     @Override
