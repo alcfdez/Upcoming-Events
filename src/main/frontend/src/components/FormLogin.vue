@@ -30,6 +30,7 @@ const submitData = async () => {
   auth.setUsername(usernameModel.value);
   auth.setIsAuthenticated();
   console.log(auth.isAuthenticate, auth.roles, auth.username);
+  router.push("/")
   } catch (error) {
     console.error(error);
     Notify.create({

@@ -25,6 +25,7 @@ const submitData = async () => {
       message: "You have successfully created your account. Welcome, " + usernameModel.value,
       position: "top"
     })
+    router.push("/login")
   } catch (error) {
     console.error(error);
     Notify.create({
