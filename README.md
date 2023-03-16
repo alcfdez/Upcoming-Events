@@ -35,7 +35,7 @@ Runs the proyect on browser from "frontend" folder.
 ### Prototype (MockUp)
 ![image](https://user-images.githubusercontent.com/117633735/225768521-0ea1e164-1e7f-4b89-9186-31f9167abf19.png)
 
-### Scrum agile method on Jira and Confluence
+## Scrum agile method on Jira and Confluence
 ![image](https://user-images.githubusercontent.com/117633735/225769315-397feefa-660f-4f19-bb21-e811cf630721.png)
 ![image](https://user-images.githubusercontent.com/117633735/225769612-782b26cb-e273-463f-b939-233183008e40.png)
 
