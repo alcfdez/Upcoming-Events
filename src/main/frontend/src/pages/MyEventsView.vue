@@ -1,81 +1,55 @@
 <script setup>
-import HeadPage from  '../components/HeadPage.vue'
 import { ref } from 'vue'
+import { useMyEvents } from '../stores/storeAddEvent'
+
+import HeadPage from  '../components/HeadPage.vue'
+
+const { state, showAddedEvents } = useMyEvents();
+
+function addEvent(event) {
+  showAddedEvents(event);
+}
+
+const addMyEvent = async (props) => {
+  axios({
+    method: "POST",
+    url: "http://localhost:8080/api/users/subscribe/" + props.id,
+  })
+    .then((res) =>
+      Notify.create({
+        type: "positive",
+        message: "Signed up for the event successfully!",
+        icon: "fa-solid fa-circle-check",
+        position: "top",
+      })
+    )
+    .catch(
+      q.create({
+        color: "negative",
+        message: "This event already exists",
+        position: "top",
+      })
+    );
+};
+
+const url = "http://localhost:8080/";
+
 const columns = [
   {
-    name: 'desc',
+    name: 'title',
     required: true,
-    label: 'Dessert (100g serving)',
+    label: 'Title',
     align: 'left',
     field: row => row.name,
     sortable: true
   },
-  { name: 'calories', align: 'center', label: 'Calories', field: 'calories', sortable: true },
-  { name: 'fat', label: 'Fat (g)', field: 'fat', sortable: true },
-  { name: 'carbs', label: 'Carbs (g)', field: 'carbs' }
+  { name: 'MusicStyle', align: 'center', label: 'MusicStyle', field: 'MusicStyle', sortable: true },
+  { name: 'Description', label: 'Description', field: 'Description', sortable: true },
+  { name: 'date_hour', label: 'Date', field: 'date_hour' }
 ]
-const rows = [
-  {
-    name: 'Frozen Yogurt',
-    calories: 159,
-    fat: 6.0,
-    carbs: 24
-  },
-  {
-    name: 'Ice cream sandwich',
-    calories: 237,
-    fat: 9.0,
-    carbs: 37
-  },
-  {
-    name: 'Eclair',
-    calories: 262,
-    fat: 16.0,
-    carbs: 23
-  },
-  {
-    name: 'Cupcake',
-    calories: 305,
-    fat: 3.7,
-    carbs: 67
-  },
-  {
-    name: 'Gingerbread',
-    calories: 356,
-    fat: 16.0,
-    carbs: 49
-  },
-  {
-    name: 'Jelly bean',
-    calories: 375,
-    fat: 0.0,
-    carbs: 94
-  },
-  {
-    name: 'Lollipop',
-    calories: 392,
-    fat: 0.2,
-    carbs: 98
-  },
-  {
-    name: 'Honeycomb',
-    calories: 408,
-    fat: 3.2,
-    carbs: 87
-  },
-  {
-    name: 'Donut',
-    calories: 452,
-    fat: 25.0,
-    carbs: 51
-  },
-  {
-    name: 'KitKat',
-    calories: 518,
-    fat: 26.0,
-    carbs: 65
-  }
-]
+
+
+
 </script>
 <template>
     <q-page class="bg-blue column items-center">
@@ -86,20 +60,12 @@ const rows = [
     <q-table
       grid
       grid-header
-      title="Treats"
       :rows="rows"
       :columns="columns"
       row-key="name"
-      :filter="filter"
       hide-header
     >
-      <template v-slot:top-right>
-        <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
-          <template v-slot:append>
-            <q-icon name="search" />
-          </template>
-        </q-input>
-      </template>
+     
     </q-table>
   </div>
   </div>
