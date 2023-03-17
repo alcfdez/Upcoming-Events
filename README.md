@@ -17,12 +17,14 @@ To use the npm package
 
 Runs the proyect on browser from "frontend" folder.
 
+### `npm run test:unit`
+To run test from frontend folder.
+
 ### Final product
 
 ![3](https://user-images.githubusercontent.com/117633735/225766671-a93b05e9-bd47-45af-98b7-3aff1cb7131c.png)
 ![2](https://user-images.githubusercontent.com/117633735/225766752-b0118c65-7e21-44df-98c6-b69051ad690e.png)
 ![5](https://user-images.githubusercontent.com/117633735/225766809-ffc79384-a6c8-4e38-90aa-746ceccd705a.png)
-
 
 ## Figma 
 ### Sketch
