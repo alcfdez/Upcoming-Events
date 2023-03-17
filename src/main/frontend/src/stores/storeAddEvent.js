@@ -34,16 +34,4 @@ export function useMyEvents() {
 }
 
 
-// export const storeMyEventsUser = defineStore({
-//     id: "myEventUser",
-//     state: () => ({
-//         addedEvents: [],
-//     }),
 
-//     actions: {
-//         showAddedEvents(event) {
-//             if (this.addedEvents.indexOf(event) === -1) {
-//                 this.addedEvents.push(event)
-//             }
-//         }
-//     }

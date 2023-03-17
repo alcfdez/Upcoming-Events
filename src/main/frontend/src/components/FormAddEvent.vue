@@ -67,7 +67,7 @@ const options = [
         />
         <q-img
           src="../assets/images/logo.png"
-          class="self-end q-mt-lg col-xl-12 logo"
+          class="self-end q-mt-lg  logo"
         />
       </div>
       <q-form
@@ -206,7 +206,7 @@ const options = [
 .container-icons {
   display: flex;
   justify-content: space-between;
-  width: 40vw;
+  width: 73%;
   height: 11vh;
 }
 .q-mt-xl {

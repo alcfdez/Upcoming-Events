@@ -44,13 +44,7 @@ public class Event {
     public Event() {
     }
 
-    // // public long getId() {
-    // //     return id;
-    // // }
 
-    // public Event(long id, String title, Date date_hour, int max_participants, String description, String style,
-    //         int actual_participants) {
-    //     this.id = id;
     public Event(String title, Date date_hour, int max_participants, String description,
             int actual_participants, Set<User> users, String style) {
         this.title = title;

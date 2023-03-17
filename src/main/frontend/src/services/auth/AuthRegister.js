@@ -6,7 +6,6 @@ export default class AuthRegister {
   #auth = "";
 
   async register(username, password) {
-    // this.#auth = window.btoa(`${username}:${password}`).toString();
 
     const user = {
       username: username,
