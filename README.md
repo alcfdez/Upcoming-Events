@@ -40,17 +40,27 @@ Runs the proyect on browser from "frontend" folder.
 ![image](https://user-images.githubusercontent.com/117633735/225769612-782b26cb-e273-463f-b939-233183008e40.png)
 
 
-### Tools
+### :heavy_check_mark: Tools
 
-* Figma
-* Jira
-* Confluence
-* HTML5
-* SASS (SCSS)
-* QUasar
-* JavaScript
-* Vue
-* Vite
+- Figma
+- Jira
+- HTML5
+- SASS (SCSS)
+- JS
+- VUE3
+- Vite
+- Pinia
+- Java
+- Xamp
+- MsQL
+- Workbench
+- Postman
+- SpringBoot
+- Quasar
+
+## Recommended IDE Setup
+
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-vue-plugin).
 
 ### Notes
 If the project doesn't works, go to file app.js on "quasar" folder and on line 21 (import createRouter from 'app/src/router/index') replace "index" for routes instead.
