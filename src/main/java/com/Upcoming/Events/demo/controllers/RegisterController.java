@@ -9,10 +9,10 @@ import com.Upcoming.Events.demo.services.UserServiceImpl;
 @RestController
 @RequestMapping("/api/")
 public class RegisterController {
-    
+
     UserServiceImpl service;
 
-    public RegisterController(UserServiceImpl service){
+    public RegisterController(UserServiceImpl service) {
         this.service = service;
     }
 

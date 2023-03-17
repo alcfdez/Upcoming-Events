@@ -43,7 +43,6 @@ public class UserController {
 
   }
 
-
   @Transactional
   @GetMapping
   public List<User> getAll() {

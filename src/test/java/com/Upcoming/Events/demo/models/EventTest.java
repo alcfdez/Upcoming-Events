@@ -13,7 +13,5 @@ public class EventTest {
         assertEquals("Hola", event.getStyle());
     }
 
-
-
     }
 

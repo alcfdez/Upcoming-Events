@@ -1,4 +1,5 @@
 package com.Upcoming.Events.demo.models;
+
 import java.util.List;
 
 import javax.persistence.*;
@@ -45,12 +46,12 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name= "name")
+    @Column(name = "name")
     String roleName;
-    
+
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")
-    List <User> users;
+    List<User> users;
 
     public Role(String roleName) {
         this.roleName = roleName;

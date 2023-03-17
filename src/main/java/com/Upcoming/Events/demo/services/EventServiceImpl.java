@@ -10,67 +10,66 @@ import org.springframework.stereotype.Service;
 import com.Upcoming.Events.demo.models.Event;
 import com.Upcoming.Events.demo.repositories.EventRepository;
 
-
 @Service
-public class EventServiceImpl implements BaseService<Event>{
+public class EventServiceImpl implements BaseService<Event> {
 
-    @Autowired
-    private EventRepository eventRepository;
+  @Autowired
+  private EventRepository eventRepository;
 
-    public EventServiceImpl(EventRepository eventRepository) {
-        this.eventRepository = eventRepository;
+  public EventServiceImpl(EventRepository eventRepository) {
+    this.eventRepository = eventRepository;
+  }
+
+  @Override
+  @Transactional
+  public List<Event> findAll() {
+    return eventRepository.findAll();
+  }
+
+  @Override
+  @Transactional
+  public Page<Event> findAll(Pageable pageable) {
+    return eventRepository.findAll(pageable);
+  }
+
+  @Override
+  @Transactional
+  public Event save(Event event) {
+    if (event.getStyle().equals("dance")) {
+      event.setStyle("dance.png");
     }
-
-    @Override
-    @Transactional 
-    public List<Event> findAll() {
-        return eventRepository.findAll();
+    if (event.getStyle().equals("pop")) {
+      event.setStyle("pop.png");
     }
-
-    @Override
-    @Transactional
-    public Page<Event> findAll(Pageable pageable) {
-        return eventRepository.findAll(pageable);
+    if (event.getStyle().equals("rock")) {
+      event.setStyle("rock.png");
     }
-
-    @Override
-    @Transactional
-    public Event save(Event event) {
-        if (event.getStyle().equals("dance"))  {
-            event.setStyle("dance.png");
-          }
-          if (event.getStyle().equals("pop"))  {
-            event.setStyle("pop.png");
-          }
-          if (event.getStyle().equals("rock"))  {
-            event.setStyle("rock.png");
-          }
-          if (event.getStyle().equals("latina"))  {
-            event.setStyle("latina.png");
-          }
-          if (event.getStyle().equals("alternativa"))  {
-            event.setStyle("alternativa.png");
-          }
-          if (event.getStyle().equals("hiphop"))  {
-            event.setStyle("hiphop.png");
-          }
-          if (event.getStyle().equals("metal"))  {
-            event.setStyle("metal.png");
-          }
-            return eventRepository.save(event);
+    if (event.getStyle().equals("latina")) {
+      event.setStyle("latina.png");
     }
-
-    @Override
-    @Transactional
-    public Optional<Event> findById(Long id) {
-       return eventRepository.findById(id);
+    if (event.getStyle().equals("alternativa")) {
+      event.setStyle("alternativa.png");
     }
-
-    @Override
-    @Transactional
-    public void deleteById(Long id) {
-       eventRepository.deleteById(id);
-
+    if (event.getStyle().equals("hiphop")) {
+      event.setStyle("hiphop.png");
     }
+    if (event.getStyle().equals("metal")) {
+      event.setStyle("metal.png");
+    }
+    return eventRepository.save(event);
+  }
 
-    }    
+  @Override
+  @Transactional
+  public Optional<Event> findById(Long id) {
+    return eventRepository.findById(id);
+  }
+
+  @Override
+  @Transactional
+  public void deleteById(Long id) {
+    eventRepository.deleteById(id);
+
+  }
+
+}

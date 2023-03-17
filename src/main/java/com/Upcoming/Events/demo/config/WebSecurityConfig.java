@@ -13,8 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.Upcoming.Events.demo.services.SecurityUserDetailsService;
 
-
-@ComponentScan 
+@ComponentScan
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
@@ -30,28 +29,28 @@ public class WebSecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-     http
-      .cors()
-      .and()
-      .headers(header -> header.frameOptions().sameOrigin())
-      .csrf(csrf -> csrf.disable())
-      .formLogin(form-> form.disable())
-      .logout(logout -> logout
+        http
+                .cors()
+                .and()
+                .headers(header -> header.frameOptions().sameOrigin())
+                .csrf(csrf -> csrf.disable())
+                .formLogin(form -> form.disable())
+                .logout(logout -> logout
                         .logoutUrl("/api/logout")
-                        .deleteCookies("JSESSIONID"))   
-                        .authorizeRequests((auth) -> auth
+                        .deleteCookies("JSESSIONID"))
+                .authorizeRequests((auth) -> auth
                         .antMatchers("/api/register", "/api/login", "/api/events", "/*").permitAll()
-                        .antMatchers("/api/logout").hasAnyRole("USER","ADMIN")
+                        .antMatchers("/api/logout").hasAnyRole("USER", "ADMIN")
                         .antMatchers("/api/events/add").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .userDetailsService(service)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                 .httpBasic(basic -> basic.authenticationEntryPoint(authenticationEntryPoint));
-                return http.build();
+        return http.build();
     }
 
     @Bean
-    PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

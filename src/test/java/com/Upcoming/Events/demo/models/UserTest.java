@@ -12,21 +12,13 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-// import org.springframework.test.annotation.Rollback;
 
 import com.Upcoming.Events.demo.repositories.AuthorityRepository;
 import com.Upcoming.Events.demo.repositories.UserRepository;
-import com.Upcoming.Events.demo.models.Role;
-import com.Upcoming.Events.demo.models.User;
 
-
-import com.Upcoming.Events.demo.models.User;
-
-import javax.persistence.EntityManager;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
-// @Rollback(value = false)
 public class UserTest {
 
     @Autowired
@@ -62,6 +54,5 @@ public class UserTest {
     void testName() {
         
     }
-
 
 }

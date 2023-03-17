@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 import java.util.Set;
 
 import javax.persistence.*;
@@ -43,7 +42,6 @@ public class Event {
 
     public Event() {
     }
-
 
     public Event(String title, Date date_hour, int max_participants, String description,
             int actual_participants, Set<User> users, String style) {

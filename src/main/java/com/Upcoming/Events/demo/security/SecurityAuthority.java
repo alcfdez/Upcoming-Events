@@ -4,11 +4,8 @@ import org.springframework.security.core.GrantedAuthority;
 
 import com.Upcoming.Events.demo.models.Role;
 
+public class SecurityAuthority implements GrantedAuthority {
 
-
-
-public class SecurityAuthority implements GrantedAuthority{
-    
     private final Role authority;
 
     public SecurityAuthority(Role authority) {

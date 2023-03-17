@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Upcoming.Events.demo.repositories.UserRepository;
 import com.Upcoming.Events.demo.security.SecurityUser;
 
-
 @Service
 public class SecurityUserDetailsService implements UserDetailsService {
 
@@ -24,8 +23,8 @@ public class SecurityUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         return userRepository
-            .findByUsername(username)
-            .map(SecurityUser::new)
-            .orElseThrow(()-> new UsernameNotFoundException("User not found: " + username));
+                .findByUsername(username)
+                .map(SecurityUser::new)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
     }
 }

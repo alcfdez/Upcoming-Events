@@ -9,8 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.Upcoming.Events.demo.models.Role;
 import com.Upcoming.Events.demo.models.User;
 
-
-
 public class SecurityUser implements UserDetails {
 
     private final User user;
@@ -33,7 +31,7 @@ public class SecurityUser implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-        for(Role role : user.getRoles()) {
+        for (Role role : user.getRoles()) {
             SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleName());
             authorities.add(authority);
         }
@@ -60,4 +58,3 @@ public class SecurityUser implements UserDetails {
         return true;
     }
 }
-

@@ -13,7 +13,7 @@ public class User {
 
     private String username;
     private String password;
-    
+
     public User(String username, String password, Set<Role> roles, List<Event> events) {
         this.username = username;
         this.password = password;
@@ -25,15 +25,11 @@ public class User {
     }
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_event",
-        joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn( name = "event_id", referencedColumnName = "id"))
+    @JoinTable(name = "user_event", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "event_id", referencedColumnName = "id"))
     private List<Event> events;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_roles",
-        joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn( name = "role_id", referencedColumnName = "id"))
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles;
 
     public List<Event> getEvents() {
