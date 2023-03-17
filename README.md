@@ -39,6 +39,11 @@ Runs the proyect on browser from "frontend" folder.
 ![image](https://user-images.githubusercontent.com/117633735/225769315-397feefa-660f-4f19-bb21-e811cf630721.png)
 ![image](https://user-images.githubusercontent.com/117633735/225769612-782b26cb-e273-463f-b939-233183008e40.png)
 
+### Userflow
+![Userflow upcommingE](https://user-images.githubusercontent.com/117633735/225780283-b3a41d5d-e7d8-4c76-b971-3676f1b61595.PNG)
+
+### Database diagram
+![image](https://user-images.githubusercontent.com/117633735/225780407-2132a53a-1b3c-47be-a33c-621c6d648a51.png)
 
 ### :heavy_check_mark: Tools
 
@@ -57,6 +62,7 @@ Runs the proyect on browser from "frontend" folder.
 - Postman
 - SpringBoot
 - Quasar
+- Axios
 
 ## Recommended IDE Setup
 
