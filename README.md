@@ -26,14 +26,14 @@ Runs the proyect on browser from "frontend" folder.
 
 ## Figma 
 ### Sketch
-
 ![image](https://user-images.githubusercontent.com/117633735/225768126-5789a8a6-eb24-4e8f-8cd0-2602f2c03c56.png)
 
 ###Mockup
 ![image](https://user-images.githubusercontent.com/117633735/225768366-95436c7b-7fc6-41be-b519-6f2386e0d3f2.png)
 
-### Prototype (MockUp)
+### Prototype
 ![image](https://user-images.githubusercontent.com/117633735/225768521-0ea1e164-1e7f-4b89-9186-31f9167abf19.png)
+![image](https://user-images.githubusercontent.com/117633735/225847918-9ed740d0-2792-4719-9b8b-42b2e42c49d6.png)
 
 ## Scrum agile method on Jira and Confluence
 ![image](https://user-images.githubusercontent.com/117633735/225769315-397feefa-660f-4f19-bb21-e811cf630721.png)
