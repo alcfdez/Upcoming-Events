@@ -37,9 +37,6 @@ To run test from frontend folder.
 ![image](https://user-images.githubusercontent.com/117633735/225768521-0ea1e164-1e7f-4b89-9186-31f9167abf19.png)
 ![image](https://user-images.githubusercontent.com/117633735/225847918-9ed740d0-2792-4719-9b8b-42b2e42c49d6.png)
 
-## Scrum agile method on Jira and Confluence
-![image](https://user-images.githubusercontent.com/117633735/225769315-397feefa-660f-4f19-bb21-e811cf630721.png)
-![image](https://user-images.githubusercontent.com/117633735/225769612-782b26cb-e273-463f-b939-233183008e40.png)
 
 ### Userflow
 ![Userflow upcommingE](https://user-images.githubusercontent.com/117633735/225780283-b3a41d5d-e7d8-4c76-b971-3676f1b61595.PNG)
