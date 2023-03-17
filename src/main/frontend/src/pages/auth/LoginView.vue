@@ -9,7 +9,6 @@
 const submitData = async () =>{
     const authService = new AuthService();
     const response = await authService.login(username.value, password.value);
-    console.log(await response.data.role);
 }
 </script>
 

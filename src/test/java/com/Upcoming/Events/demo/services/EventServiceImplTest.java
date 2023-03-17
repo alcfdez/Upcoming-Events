@@ -18,8 +18,6 @@ import org.springframework.data.domain.Pageable;
 
 import com.Upcoming.Events.demo.models.Event;
 import com.Upcoming.Events.demo.repositories.EventRepository;
-import com.Upcoming.Events.demo.services.EventServiceImpl;
-
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
@@ -79,21 +77,9 @@ public class EventServiceImplTest {
 
         assertThat(result.getId()).isEqualTo(0L);
         assertThat(result.getTitle()).isEqualTo("Evento 4");
-        // assertThat(result.getDate_hour()).isEqualTo("2023-04-01");
         assertThat(result.getMax_participants()).isEqualTo(40);
         assertThat(result.getDescription()).isEqualTo("Evento de prueba 4");
         assertThat(result.getActual_participants()).isEqualTo(4);
     }
 
-    // @Test
-    // public void testDeleteEvent() throws Exception {
-    //     doNothing().when(eventRepository).deleteById(event.getId());
-    //     when(eventRepository.findById(event.getId())).thenReturn(Optional.of(event));
-
-    //     eventService.deleteById(event.getId());
-
-    //     Optional<Event> deletedEvent = eventService.findById(event.getId());
-    //     assertThat(deletedEvent).isEmpty();
-
-    // }
 }

@@ -110,7 +110,7 @@ const url = "http://localhost:8080/";
           <q-td align="center">
             <img
               :src="'http://localhost:8080/' + row.style"
-              onerror="this.src='https://marketing4ecommerce.net/wp-content/uploads/2018/08/Depositphotos_8480205_m-2015-compressor.jpg'"
+              onerror="this.src='https://images.twinkl.co.uk/tw1n/image/private/t_630/image_repo/49/d6/t-t-16131-music-title-display-lettering-_ver_1.jpg'"
             />
           </q-td>
         </template>
@@ -200,15 +200,15 @@ const url = "http://localhost:8080/";
         }
 
         &::-webkit-scrollbar {
-          height: 6px; /* Altura de la barra */
+          height: 6px;
         }
 
         &::-webkit-scrollbar-thumb {
-          background-color: #999; /* Color de la barra */
+          background-color: #999;
         }
 
         &::-webkit-scrollbar-track {
-          background-color: #ddd; /* Color del fondo de la barra */
+          background-color: #ddd;
         }
       }
     }

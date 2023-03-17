@@ -20,10 +20,9 @@ import com.Upcoming.Events.demo.models.User;
 import com.Upcoming.Events.demo.repositories.EventRepository;
 import com.Upcoming.Events.demo.repositories.UserRepository;
 
-
 @Service
-public class UserServiceImpl implements BaseService<User>{
-    
+public class UserServiceImpl implements BaseService<User> {
+
     @Autowired
     private UserRepository userRepository;
 
@@ -55,19 +54,19 @@ public class UserServiceImpl implements BaseService<User>{
     }
 
     @Transactional
-    public User store(User user) { 
+    public User store(User user) {
 
         Optional<User> userOptional = userRepository.findByUsername(user.getUsername());
 
         if (userOptional.isPresent()) {
             throw new UserAlreadyExistsException("User already exist.");
         }
-        try {          
-                BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-                String encodedPassword = passwordEncoder.encode(user.getPassword());
-                user.setPassword(encodedPassword);
-                return userRepository.save(user);
-            
+        try {
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            String encodedPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(encodedPassword);
+            return userRepository.save(user);
+
         } catch (DataAccessException e) {
             throw new UserServiceException("Dont save user", e);
         }
@@ -79,27 +78,26 @@ public class UserServiceImpl implements BaseService<User>{
         String currentUserName = authentication.getName();
         User user = userRepository.findByUsername(currentUserName)
                 .orElseThrow(() -> new RuntimeException("User not found with username " + currentUserName));
-    
+
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new RuntimeException("Event not found with id " + eventId));
-    
+
         if (event.getUsers().contains(user)) {
             throw new RuntimeException("User is already registered for the event");
         }
-    
+
         if (event.getMax_participants() <= event.getActual_participants()) {
             throw new RuntimeException("Event is full");
         }
-    
+
         event.setActual_participants(event.getActual_participants() + 1);
         user.getEvents().add(event);
         userRepository.save(user);
     }
-    
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-         userRepository.deleteById(id);
+        userRepository.deleteById(id);
     }
 }

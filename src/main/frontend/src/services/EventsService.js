@@ -38,7 +38,6 @@ class EventsService {
   async addEvent(eventId){
    await axios.post(`${this.#url}users/${eventId}`)
      .then((res) => {
-      console.log(res);
   });
   }
 }
